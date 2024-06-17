@@ -10,7 +10,7 @@ tokens = [
     'LPAREN', 'RPAREN', 'LBRACE', 'RBRACE',
     'COMMA', 'DOT', 'SEMICOLON', 'MOD' ,
     'EQUAL', 'NOTEQUAL', 'GREATERTHAN', 'LESSTHAN', 'GREATEROREQUAL', 'LESSOREQUAL',
-    'ASSIGN', 'INSTANCE_VAR', 'GLOBAL_VAR', 'CONST'
+    'ASSIGN', 'INSTANCE_VAR', 'GLOBAL_VAR', 'CONST', 'APOSTROPHE', 'DAPOSTROPHE'
 ]
 
 reserved_words = {
@@ -32,7 +32,9 @@ reserved_words = {
     'or': 'OR',
     'not': 'NOT',
     'in': 'IN',
-    'None': 'NONE'
+    'None': 'NONE',
+    'end' : 'END',
+    'puts' : 'PUTS'
 }
 
 tokens = tokens + list(reserved_words.values())
@@ -59,6 +61,8 @@ t_LESSTHAN = r'<'
 t_GREATEROREQUAL = r'>='
 t_LESSOREQUAL = r'<='
 t_ASSIGN = r'='
+t_APOSTROPHE = r'\''
+t_DAPOSTROPHE = r'\"'
 
 # ID (Variables locales, clases, nombres de funciones)
 def t_ID(t):
@@ -90,10 +94,10 @@ def t_STRING(t):
     t.value = str(t.value)
     return t
 
-t_ignore = ' \t'
+t_ignore = ' \t\f\n\r'
 
 def t_error(t):
-    print(f"Carácter ilegal '{t.value[0]}'")
+    print(f"Carácter ilegal '%s'" % t.value[0])
     t.lexer.skip(1)
 
 # Construcción del lexer
@@ -108,6 +112,7 @@ def analizar_codigo(codigo, usuario_git):
         tok = lexer.token()
         if not tok:
             break
+        print(tok)
         tokens_reconocidos.append(tok)
 
     fecha_hora = datetime.now().strftime('%d%m%Y-%Hh%M')
@@ -126,7 +131,7 @@ def analizar_codigo(codigo, usuario_git):
     print(f"Log guardado en: {ruta_archivo_log}")
 
 # Este no será el ejemplo de uso, solo lo subo para que no se caiga el programa
-codigo_ruby = '''
+codigo_ruby ='''
 def hello_world
     puts "Hello, world!"
 end
