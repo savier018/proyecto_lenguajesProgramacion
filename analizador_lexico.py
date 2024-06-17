@@ -1,4 +1,6 @@
 import ply.lex as lex
+import os
+from datetime import datetime
 
 # DIEGO CONTRERAS
 
@@ -75,3 +77,60 @@ def t_GLOBAL_VAR(t):
     t.type = 'GLOBAL_VAR' if not t.value[1:].isupper() else 'CONST'
     return t
 
+
+# AlexisLoor
+# Reglas para números, cadenas y caracteres ignorados
+def t_NUMBER(t):
+    r'\d+'
+    t.value = int(t.value)
+    return t
+
+def t_STRING(t):
+    r'\".*?\"'
+    t.value = str(t.value)
+    return t
+
+t_ignore = ' \t'
+
+def t_error(t):
+    print(f"Carácter ilegal '{t.value[0]}'")
+    t.lexer.skip(1)
+
+# Construcción del lexer
+lexer = lex.lex()
+
+# Analizar el código y generar logs
+def analizar_codigo(codigo, usuario_git):
+    lexer.input(codigo)
+    tokens_reconocidos = []
+
+    while True:
+        tok = lexer.token()
+        if not tok:
+            break
+        tokens_reconocidos.append(tok)
+
+    fecha_hora = datetime.now().strftime('%d%m%Y-%Hh%M')
+
+    nombre_archivo_log = f"lexico-{usuario_git}-{fecha_hora}.txt"
+
+    if not os.path.exists('logs'):
+        os.makedirs('logs')
+
+    ruta_archivo_log = os.path.join('logs', nombre_archivo_log)
+
+    with open(ruta_archivo_log, 'w') as archivo_log:
+        for token in tokens_reconocidos:
+            archivo_log.write(f"{token}\n")
+
+    print(f"Log guardado en: {ruta_archivo_log}")
+
+# Este no será el ejemplo de uso, solo lo subo para que no se caiga el programa
+codigo_ruby = '''
+def hello_world
+    puts "Hello, world!"
+end
+'''
+
+usuario_git = input("Ingresa tu usuario de git: ")
+analizar_codigo(codigo_ruby, usuario_git)
