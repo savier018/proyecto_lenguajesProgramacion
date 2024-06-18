@@ -179,3 +179,21 @@ end
 '''
 
 analizar_codigo(codigo_ruby_ItsDiegoTBG, "ItsDiegoTBG")
+
+
+codigo_ruby_savier018 = '''
+def suma_numeros_naturales(n)
+    suma = 0
+    for i in 1..n
+        suma += i
+    end
+    return suma
+end
+
+puts "Ingresa un número:"
+n = 10
+
+resultado = suma_numeros_naturales(n)
+'''
+
+analizar_codigo(codigo_ruby_savier018, "savier018")
