@@ -130,10 +130,13 @@ def analizar_codigo(codigo, usuario_git):
 
     print(f"Log guardado en: {ruta_archivo_log}")
 
-# Este no será el ejemplo de uso, solo lo subo para que no se caiga el programa
 codigo_ruby ='''
-def hello_world
-    puts "Hello, world!"
+def factorial(n)
+    if n == 0
+        return 1
+    else
+        return n * factorial(n-1)
+    end
 end
 '''
 
