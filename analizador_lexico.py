@@ -140,7 +140,7 @@ def analizar_codigo(codigo, usuario_git):
     print(f"Log guardado en: {ruta_archivo_log}")
 
 
-# Este no será el ejemplo de uso, solo lo subo para que no se caiga el programa
+# Testing de algoritmos
 codigo_ruby_alexisloor = '''
 def getFibonacci(n)
   firstTerm = 0
@@ -167,3 +167,15 @@ end
 '''
 
 analizar_codigo(codigo_ruby_alexisloor, "alexisloor")
+
+codigo_ruby_ItsDiegoTBG = '''
+def factorial(n)
+    if n == 0
+        return 1
+    else
+        return n * factorial(n-1)
+    end
+end
+'''
+
+analizar_codigo(codigo_ruby_ItsDiegoTBG, "ItsDiegoTBG")
