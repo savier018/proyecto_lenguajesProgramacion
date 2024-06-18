@@ -8,9 +8,9 @@ tokens = [
     'ID', 'NUMBER', 'STRING',
     'PLUS', 'MINUS', 'TIMES', 'DIVIDE',
     'LPAREN', 'RPAREN', 'LBRACE', 'RBRACE',
-    'COMMA', 'DOT', 'SEMICOLON', 'MOD' ,
+    'COMMA', 'DOT', 'SEMICOLON', 'MOD',
     'EQUAL', 'NOTEQUAL', 'GREATERTHAN', 'LESSTHAN', 'GREATEROREQUAL', 'LESSOREQUAL',
-    'ASSIGN', 'INSTANCE_VAR', 'GLOBAL_VAR', 'CONST', 'APOSTROPHE', 'DAPOSTROPHE'
+    'ASSIGN', 'INSTANCE_VAR', 'GLOBAL_VAR', 'CONST', 'APOSTROPHE', 'DAPOSTROPHE', 'LBRACKET', 'RBRACKET'
 ]
 
 reserved_words = {
@@ -25,7 +25,7 @@ reserved_words = {
     'break': 'BREAK',
     'print': 'PRINT',
     'return': 'RETURN',
-    'nil': 'NIL',  
+    'nil': 'NIL',
     'true': 'TRUE',
     'false': 'FALSE',
     'and': 'AND',
@@ -33,12 +33,11 @@ reserved_words = {
     'not': 'NOT',
     'in': 'IN',
     'None': 'NONE',
-    'end' : 'END',
-    'puts' : 'PUTS'
+    'end': 'END',
+    'puts': 'PUTS'
 }
 
 tokens = tokens + list(reserved_words.values())
-
 
 """ SAVIER ACOSTA
 Reglas de expresiones regulares para tokens """
@@ -51,6 +50,8 @@ t_LPAREN = r'\('
 t_RPAREN = r'\)'
 t_LBRACE = r'\{'
 t_RBRACE = r'\}'
+t_LBRACKET = r'\['
+t_RBRACKET = r'\]'
 t_COMMA = r','
 t_DOT = r'\.'
 t_SEMICOLON = r';'
@@ -64,18 +65,21 @@ t_ASSIGN = r'='
 t_APOSTROPHE = r'\''
 t_DAPOSTROPHE = r'\"'
 
+
 # ID (Variables locales, clases, nombres de funciones)
 def t_ID(t):
     r'[a-zA-Z_][a-zA-Z0-9_]*'
     t.type = reserved_words.get(t.value, 'ID')
     return t
 
-# Variable de instancia 
+
+# Variable de instancia
 def t_INSTANCE_VAR(t):
     r'@[a-zA-Z_][a-zA-Z0-9_]*'
     return t
 
-# Variable global o constante 
+
+# Variable global o constante
 def t_GLOBAL_VAR(t):
     r'\$[a-zA-Z_][a-zA-Z0-9_]*'
     t.type = 'GLOBAL_VAR' if not t.value[1:].isupper() else 'CONST'
@@ -89,19 +93,24 @@ def t_NUMBER(t):
     t.value = int(t.value)
     return t
 
+
 def t_STRING(t):
     r'\".*?\"'
     t.value = str(t.value)
     return t
 
+
 t_ignore = ' \t\f\n\r'
+
 
 def t_error(t):
     print(f"Carácter ilegal '%s'" % t.value[0])
     t.lexer.skip(1)
 
+
 # Construcción del lexer
 lexer = lex.lex()
+
 
 # Analizar el código y generar logs
 def analizar_codigo(codigo, usuario_git):
@@ -130,12 +139,31 @@ def analizar_codigo(codigo, usuario_git):
 
     print(f"Log guardado en: {ruta_archivo_log}")
 
+
 # Este no será el ejemplo de uso, solo lo subo para que no se caiga el programa
-codigo_ruby ='''
-def hello_world
-    puts "Hello, world!"
-end
+codigo_ruby_alexisloor = '''
+def getFibonacci(n)
+  firstTerm = 0
+  secondTerm = 1
+  nextTerm = 0
+  counter = 1
+  result = []
+  puts "The first #{n} terms of Fibonacci series are:-"
+  result.push(firstTerm)
+  while(counter <= n + 1)
+    if(counter <= 1)
+        nextTerm = counter
+    else
+        result.push(nextTerm)
+        nextTerm = firstTerm + secondTerm
+        firstTerm = secondTerm
+        secondTerm = nextTerm
+    end
+    counter += 1
+  end
+  
+  puts result.to_s
+end 
 '''
 
-usuario_git = input("Ingresa tu usuario de git: ")
-analizar_codigo(codigo_ruby, usuario_git)
+analizar_codigo(codigo_ruby_alexisloor, "alexisloor")
