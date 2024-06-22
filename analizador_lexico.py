@@ -34,7 +34,11 @@ reserved_words = {
     'in': 'IN',
     'None': 'NONE',
     'end': 'END',
-    'puts': 'PUTS'
+    'puts': 'PUTS',
+    'case': 'CASE',
+    'when': 'WHEN',
+    'p':'P',
+    'gets':'GETS'
 }
 
 tokens = tokens + list(reserved_words.values())
