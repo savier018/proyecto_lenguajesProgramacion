@@ -10,7 +10,7 @@ tokens = [
     'LPAREN', 'RPAREN', 'LBRACE', 'RBRACE',
     'COMMA', 'DOT', 'SEMICOLON', 'MOD',
     'EQUAL', 'NOTEQUAL', 'GREATERTHAN', 'LESSTHAN', 'GREATEROREQUAL', 'LESSOREQUAL',
-    'ASSIGN', 'INSTANCE_VAR', 'GLOBAL_VAR', 'CONST', 'APOSTROPHE', 'DAPOSTROPHE', 'LBRACKET', 'RBRACKET'
+    'ASSIGN', 'INSTANCE_VAR', 'GLOBAL_VAR', 'CONST', 'APOSTROPHE', 'DAPOSTROPHE', 'LBRACKET', 'RBRACKET', 'BOOLEAN'
 ]
 
 reserved_words = {
@@ -68,6 +68,7 @@ t_LESSOREQUAL = r'<='
 t_ASSIGN = r'='
 t_APOSTROPHE = r'\''
 t_DAPOSTROPHE = r'\"'
+t_BOOLEAN = r'(true|false)'
 
 
 # ID (Variables locales, clases, nombres de funciones)
@@ -143,61 +144,61 @@ def analizar_codigo(codigo, usuario_git):
 
     print(f"Log guardado en: {ruta_archivo_log}")
 
-
-# Testing de algoritmos
-codigo_ruby_alexisloor = '''
-def getFibonacci(n)
-  firstTerm = 0
-  secondTerm = 1
-  nextTerm = 0
-  counter = 1
-  result = []
-  puts "The first #{n} terms of Fibonacci series are:-"
-  result.push(firstTerm)
-  while(counter <= n + 1)
-    if(counter <= 1)
-        nextTerm = counter
-    else
-        result.push(nextTerm)
-        nextTerm = firstTerm + secondTerm
-        firstTerm = secondTerm
-        secondTerm = nextTerm
-    end
-    counter += 1
-  end
-  
-  puts result.to_s
-end 
-'''
-
-analizar_codigo(codigo_ruby_alexisloor, "alexisloor")
-
-codigo_ruby_ItsDiegoTBG = '''
-def factorial(n)
-    if n == 0
-        return 1
-    else
-        return n * factorial(n-1)
-    end
-end
-'''
-
-analizar_codigo(codigo_ruby_ItsDiegoTBG, "ItsDiegoTBG")
-
-
-codigo_ruby_savier018 = '''
-def suma_numeros_naturales(n)
-    suma = 0
-    for i in 1..n
-        suma += i
-    end
-    return suma
-end
-
-puts "Ingresa un número:"
-n = 10
-
-resultado = suma_numeros_naturales(n)
-'''
-
-analizar_codigo(codigo_ruby_savier018, "savier018")
+#
+# # Testing de algoritmos
+# codigo_ruby_alexisloor = '''
+# def getFibonacci(n)
+#   firstTerm = 0
+#   secondTerm = 1
+#   nextTerm = 0
+#   counter = 1
+#   result = []
+#   puts "The first #{n} terms of Fibonacci series are:-"
+#   result.push(firstTerm)
+#   while(counter <= n + 1)
+#     if(counter <= 1)
+#         nextTerm = counter
+#     else
+#         result.push(nextTerm)
+#         nextTerm = firstTerm + secondTerm
+#         firstTerm = secondTerm
+#         secondTerm = nextTerm
+#     end
+#     counter += 1
+#   end
+#
+#   puts result.to_s
+# end
+# '''
+#
+# analizar_codigo(codigo_ruby_alexisloor, "alexisloor")
+#
+# codigo_ruby_ItsDiegoTBG = '''
+# def factorial(n)
+#     if n == 0
+#         return 1
+#     else
+#         return n * factorial(n-1)
+#     end
+# end
+# '''
+#
+# analizar_codigo(codigo_ruby_ItsDiegoTBG, "ItsDiegoTBG")
+#
+#
+# codigo_ruby_savier018 = '''
+# def suma_numeros_naturales(n)
+#     suma = 0
+#     for i in 1..n
+#         suma += i
+#     end
+#     return suma
+# end
+#
+# puts "Ingresa un número:"
+# n = 10
+#
+# resultado = suma_numeros_naturales(n)
+# '''
+#
+# analizar_codigo(codigo_ruby_savier018, "savier018")

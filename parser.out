@@ -1,0 +1,251 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    APOSTROPHE
+    BREAK
+    CLASS
+    CONST
+    DAPOSTROPHE
+    DOT
+    ELSE
+    ELSIF
+    EQUAL
+    FALSE
+    FOR
+    GETS
+    GREATEROREQUAL
+    IF
+    IN
+    LBRACE
+    LESSOREQUAL
+    NIL
+    NONE
+    NOT
+    NOTEQUAL
+    RBRACE
+    RETURN
+    SEMICOLON
+    TRUE
+
+Grammar
+
+Rule 0     S' -> assign
+Rule 1     assign -> INSTANCE_VAR ASSIGN value
+Rule 2     assign -> GLOBAL_VAR ASSIGN value
+Rule 3     value -> NUMBER
+Rule 4     value -> STRING
+Rule 5     value -> BOOLEAN
+Rule 6     code -> aritmeticExpresion
+Rule 7     code -> impression
+Rule 8     code -> tupla
+Rule 9     code -> assign
+Rule 10    code -> conditions
+Rule 11    code -> while_loop
+Rule 12    values -> value
+Rule 13    values -> value COMMA values
+Rule 14    aritmeticExpresion -> value operator value
+Rule 15    operator -> PLUS
+Rule 16    operator -> MINUS
+Rule 17    operator -> TIMES
+Rule 18    operator -> DIVIDE
+Rule 19    operator -> MOD
+Rule 20    array -> LBRACKET RBRACKET
+Rule 21    array -> LBRACKET values RBRACKET
+Rule 22    conector -> AND
+Rule 23    conector -> OR
+Rule 24    operComp -> LESSTHAN
+Rule 25    operComp -> GREATERTHAN
+Rule 26    condition -> value operComp value
+Rule 27    conditions -> condition
+Rule 28    conditions -> condition conector conditions
+Rule 29    when -> WHEN conditions code
+Rule 30    whens -> when
+Rule 31    whens -> whens
+Rule 32    case -> CASE whens END
+Rule 33    Sfunction -> DEF ID code END
+Rule 34    p_SfunctionINV -> ID
+Rule 35    p_SfunctionINV -> ID LPAREN RPAREN
+Rule 36    impression -> PRINT LPAREN values RPAREN
+Rule 37    impression -> PRINT values
+Rule 38    impression -> PUTS values
+Rule 39    impression -> PUTS LPAREN values RPAREN
+Rule 40    impression -> P LPAREN values RPAREN
+Rule 41    impression -> P values
+Rule 42    while_loop -> WHILE condition DO code END
+Rule 43    tupla -> LPAREN values RPAREN
+
+Terminals, with rules where they appear
+
+AND                  : 22
+APOSTROPHE           : 
+ASSIGN               : 1 2
+BOOLEAN              : 5
+BREAK                : 
+CASE                 : 32
+CLASS                : 
+COMMA                : 13
+CONST                : 
+DAPOSTROPHE          : 
+DEF                  : 33
+DIVIDE               : 18
+DO                   : 42
+DOT                  : 
+ELSE                 : 
+ELSIF                : 
+END                  : 32 33 42
+EQUAL                : 
+FALSE                : 
+FOR                  : 
+GETS                 : 
+GLOBAL_VAR           : 2
+GREATEROREQUAL       : 
+GREATERTHAN          : 25
+ID                   : 33 34 35
+IF                   : 
+IN                   : 
+INSTANCE_VAR         : 1
+LBRACE               : 
+LBRACKET             : 20 21
+LESSOREQUAL          : 
+LESSTHAN             : 24
+LPAREN               : 35 36 39 40 43
+MINUS                : 16
+MOD                  : 19
+NIL                  : 
+NONE                 : 
+NOT                  : 
+NOTEQUAL             : 
+NUMBER               : 3
+OR                   : 23
+P                    : 40 41
+PLUS                 : 15
+PRINT                : 36 37
+PUTS                 : 38 39
+RBRACE               : 
+RBRACKET             : 20 21
+RETURN               : 
+RPAREN               : 35 36 39 40 43
+SEMICOLON            : 
+STRING               : 4
+TIMES                : 17
+TRUE                 : 
+WHEN                 : 29
+WHILE                : 42
+error                : 
+
+Nonterminals, with rules where they appear
+
+Sfunction            : 
+aritmeticExpresion   : 6
+array                : 
+assign               : 9 0
+case                 : 
+code                 : 29 33 42
+condition            : 27 28 42
+conditions           : 10 28 29
+conector             : 28
+impression           : 7
+operComp             : 26
+operator             : 14
+p_SfunctionINV       : 
+tupla                : 8
+value                : 1 2 12 13 14 14 26 26
+values               : 13 21 36 37 38 39 40 41 43
+when                 : 30
+whens                : 31 32
+while_loop           : 11
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . assign
+    (1) assign -> . INSTANCE_VAR ASSIGN value
+    (2) assign -> . GLOBAL_VAR ASSIGN value
+
+    INSTANCE_VAR    shift and go to state 2
+    GLOBAL_VAR      shift and go to state 3
+
+    assign                         shift and go to state 1
+
+state 1
+
+    (0) S' -> assign .
+
+
+
+state 2
+
+    (1) assign -> INSTANCE_VAR . ASSIGN value
+
+    ASSIGN          shift and go to state 4
+
+
+state 3
+
+    (2) assign -> GLOBAL_VAR . ASSIGN value
+
+    ASSIGN          shift and go to state 5
+
+
+state 4
+
+    (1) assign -> INSTANCE_VAR ASSIGN . value
+    (3) value -> . NUMBER
+    (4) value -> . STRING
+    (5) value -> . BOOLEAN
+
+    NUMBER          shift and go to state 7
+    STRING          shift and go to state 8
+    BOOLEAN         shift and go to state 9
+
+    value                          shift and go to state 6
+
+state 5
+
+    (2) assign -> GLOBAL_VAR ASSIGN . value
+    (3) value -> . NUMBER
+    (4) value -> . STRING
+    (5) value -> . BOOLEAN
+
+    NUMBER          shift and go to state 7
+    STRING          shift and go to state 8
+    BOOLEAN         shift and go to state 9
+
+    value                          shift and go to state 10
+
+state 6
+
+    (1) assign -> INSTANCE_VAR ASSIGN value .
+
+    $end            reduce using rule 1 (assign -> INSTANCE_VAR ASSIGN value .)
+
+
+state 7
+
+    (3) value -> NUMBER .
+
+    $end            reduce using rule 3 (value -> NUMBER .)
+
+
+state 8
+
+    (4) value -> STRING .
+
+    $end            reduce using rule 4 (value -> STRING .)
+
+
+state 9
+
+    (5) value -> BOOLEAN .
+
+    $end            reduce using rule 5 (value -> BOOLEAN .)
+
+
+state 10
+
+    (2) assign -> GLOBAL_VAR ASSIGN value .
+
+    $end            reduce using rule 2 (assign -> GLOBAL_VAR ASSIGN value .)
+

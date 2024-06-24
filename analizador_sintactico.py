@@ -2,32 +2,34 @@
 
 import ply.yacc as yacc
 from analizador_lexico import tokens
-import os
-from datetime import datetime
+
 
 def p_error(p):
-    print("Syntax error in input!")
+    print(f"Syntax error in input! {p.value}', line {p.lineno}")
 
 def p_assign(p):
-    '''assign : INSTANCE_VAR ASSIGN value | GLOBAL_VAR ASSIGN value '''
+    '''assign : INSTANCE_VAR ASSIGN value
+              | GLOBAL_VAR ASSIGN value
+              '''
 
 def p_value(p):
     '''value : NUMBER
             |  STRING
             |  BOOLEAN'''
-    
+
 def p_code(p):
-    '''code : aritmeticExpresion 
-              | impresion
+    '''code : aritmeticExpresion
+              | impression
               | tupla
-              | asignacion
-              | condiciones'''
-    
+              | assign
+              | conditions
+              | while_loop'''
+
 
 def p_values(p):
-    '''values : value 
-    | value COMMA values'''
-    
+    '''values : value
+              | value COMMA values'''
+
 # Try and add here about PEDMAS arithmetic equation
 
 def p_aritmeticExpresion(p):
@@ -40,13 +42,12 @@ def p_operator(p):
                 | TIMES
                 | DIVIDE
                 | MOD'''
-    
+
 def p_emptyarray(p):
-    '''array: LBRACKET RBRACKET'''
+    '''array : LBRACKET RBRACKET'''
 
 def p_array(p):
-    '''array : LPAREN values RPAREN'''
-
+    '''array : LBRACKET values RBRACKET'''
 
 #ADD HERE ABOUT CASE
 
@@ -56,60 +57,68 @@ def p_conector(p):
 
 def p_operComp(p):
     '''operComp : LESSTHAN
-                | MORETHAN'''
+                | GREATERTHAN'''
 
 def p_condition(p):
-    'condition : value operComp value'
+    '''condition : value operComp value'''
 
 def p_conditions(p):
-    '''conditions : condition 
+    '''conditions : condition
                   | condition conector conditions'''
 
 def p_when(p):
     'when : WHEN conditions code'
 
-
 def p_whens(p):
-    '''whens : when 
-                | whens'''
+    '''whens : when
+             | whens'''
 
 def p_case(p):
-    '''case: CASE whens END'''
-
-
+    '''case : CASE whens END'''
 
 #ADD HERE ABOUT SIMPLE FUNCION DECLARATION WITHOUT PARAMETERS.
 
-def p_Sfunction(p){
+def p_Sfunction(p):
     '''Sfunction : DEF ID code END'''
-}
 
-def p_SfunctionINV(p){
-    '''p_SfunctionINV : ID | ID LPAREN RPAREN'''
-}
+def p_SfunctionINV(p):
+    '''p_SfunctionINV : ID
+                      | ID LPAREN RPAREN'''
 
 # RECORDAR PUTS DA SALTO DE PAGINAS AGREGAR DE UNA FORMA.
 
 #Impresión y solicitud de datos
 
 def p_impression(p):
-    '''impression : PRINT LPAREN values RPAREN 
-    | PRINT values 
-    | PUTS values \n 
-    | PUTS LPAREN values RPAREN \n 
-    | P LPAREN values RPAREN 
-    | P values'''
+    '''impression : PRINT LPAREN values RPAREN
+                  | PRINT values
+                  | PUTS values \n
+                  | PUTS LPAREN values RPAREN \n
+                  | P LPAREN values RPAREN
+                  | P values'''
 
-#solicitud de datos   
-
+#solicitud de datos
 def dataIn(p):
     '''dataIn: ASSIGN GETS '''
 
 
+# While loop Alexis Loor
+def p_while_loop(p):
+    '''while_loop : WHILE condition DO code END'''
+
+# Definicion para 'tupla'
+def p_tupla(p):
+    '''tupla : LPAREN values RPAREN'''
 
 # Diego´s part ends here.
-
-
-
-
 parser = yacc.yacc()
+
+
+while True:
+   try:
+       s = input('lp > ')
+   except EOFError:
+       break
+   if not s: continue
+   result = parser.parse(s)
+   print(result)
