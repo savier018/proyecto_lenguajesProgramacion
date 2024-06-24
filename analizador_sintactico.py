@@ -85,7 +85,7 @@ def p_Sfunction(p){
 }
 
 def p_SfunctionINV(p){
-    '''p_SfunctionINV : Sfunction | Sfunction LPAREN RPAREN'''
+    '''p_SfunctionINV : ID | ID LPAREN RPAREN'''
 }
 
 # RECORDAR PUTS DA SALTO DE PAGINAS AGREGAR DE UNA FORMA.
