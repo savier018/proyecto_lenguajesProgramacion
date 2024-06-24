@@ -17,7 +17,7 @@ def p_value(p):
             |  BOOLEAN'''
     
 def p_code(p):
-    '''code : expresionAritmetica 
+    '''code : aritmeticExpresion 
               | impresion
               | tupla
               | asignacion
@@ -28,10 +28,10 @@ def p_values(p):
     '''values : value 
     | value COMMA values'''
     
-# Try and add here about PEDMAS
+# Try and add here about PEDMAS arithmetic equation
 
-def p_expresionAritmetica(p):
-    '''expresionAritmetica : value operator value '''
+def p_aritmeticExpresion(p):
+    '''aritmeticExpresion : value operator value '''
 
 
 def p_operator(p):
@@ -78,13 +78,19 @@ def p_case(p):
 
 
 
-#ADD HERE ABOUT SIMPLE FUNCION DECLARATION.
+#ADD HERE ABOUT SIMPLE FUNCION DECLARATION WITHOUT PARAMETERS.
 
+def p_Sfunction(p){
+    '''Sfunction : DEF ID code END'''
+}
 
-
-#Impresión y solicitud de datos
+def p_SfunctionINV(p){
+    '''p_SfunctionINV : Sfunction | Sfunction LPAREN RPAREN'''
+}
 
 # RECORDAR PUTS DA SALTO DE PAGINAS AGREGAR DE UNA FORMA.
+
+#Impresión y solicitud de datos
 
 def p_impression(p):
     '''impression : PRINT LPAREN values RPAREN 
@@ -93,6 +99,8 @@ def p_impression(p):
     | PUTS LPAREN values RPAREN \n 
     | P LPAREN values RPAREN 
     | P values'''
+
+#solicitud de datos   
 
 def dataIn(p):
     '''dataIn: ASSIGN GETS '''
