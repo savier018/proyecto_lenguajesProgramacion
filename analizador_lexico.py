@@ -37,8 +37,8 @@ reserved_words = {
     'puts': 'PUTS',
     'case': 'CASE',
     'when': 'WHEN',
-    'p':'P',
-    'gets':'GETS'
+    'p': 'P',
+    'gets': 'GETS'
 }
 
 tokens = tokens + list(reserved_words.values())
@@ -50,6 +50,7 @@ t_PLUS = r'\+'
 t_MINUS = r'-'
 t_TIMES = r'\*'
 t_DIVIDE = r'/'
+t_MOD = r'\%'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
 t_LBRACE = r'\{'
@@ -117,32 +118,32 @@ def t_error(t):
 lexer = lex.lex()
 
 
-# Analizar el código y generar logs
-def analizar_codigo(codigo, usuario_git):
-    lexer.input(codigo)
-    tokens_reconocidos = []
-
-    while True:
-        tok = lexer.token()
-        if not tok:
-            break
-        print(tok)
-        tokens_reconocidos.append(tok)
-
-    fecha_hora = datetime.now().strftime('%d%m%Y-%Hh%M')
-
-    nombre_archivo_log = f"lexico-{usuario_git}-{fecha_hora}.txt"
-
-    if not os.path.exists('logs'):
-        os.makedirs('logs')
-
-    ruta_archivo_log = os.path.join('logs', nombre_archivo_log)
-
-    with open(ruta_archivo_log, 'w') as archivo_log:
-        for token in tokens_reconocidos:
-            archivo_log.write(f"{token}\n")
-
-    print(f"Log guardado en: {ruta_archivo_log}")
+# # Analizar el código y generar logs
+# def analizar_codigo(codigo, usuario_git):
+#     lexer.input(codigo)
+#     tokens_reconocidos = []
+#
+#     while True:
+#         tok = lexer.token()
+#         if not tok:
+#             break
+#         print(tok)
+#         tokens_reconocidos.append(tok)
+#
+#     fecha_hora = datetime.now().strftime('%d%m%Y-%Hh%M')
+#
+#     nombre_archivo_log = f"lexico-{usuario_git}-{fecha_hora}.txt"
+#
+#     if not os.path.exists('logs'):
+#         os.makedirs('logs')
+#
+#     ruta_archivo_log = os.path.join('logs', nombre_archivo_log)
+#
+#     with open(ruta_archivo_log, 'w') as archivo_log:
+#         for token in tokens_reconocidos:
+#             archivo_log.write(f"{token}\n")
+#
+#     print(f"Log guardado en: {ruta_archivo_log}")
 
 #
 # # Testing de algoritmos

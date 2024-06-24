@@ -30,222 +30,2172 @@ Unused terminals:
 
 Grammar
 
-Rule 0     S' -> assign
-Rule 1     assign -> INSTANCE_VAR ASSIGN value
-Rule 2     assign -> GLOBAL_VAR ASSIGN value
-Rule 3     value -> NUMBER
-Rule 4     value -> STRING
-Rule 5     value -> BOOLEAN
-Rule 6     code -> aritmeticExpresion
-Rule 7     code -> impression
-Rule 8     code -> tupla
-Rule 9     code -> assign
-Rule 10    code -> conditions
-Rule 11    code -> while_loop
-Rule 12    values -> value
-Rule 13    values -> value COMMA values
-Rule 14    aritmeticExpresion -> value operator value
-Rule 15    operator -> PLUS
-Rule 16    operator -> MINUS
-Rule 17    operator -> TIMES
-Rule 18    operator -> DIVIDE
-Rule 19    operator -> MOD
-Rule 20    array -> LBRACKET RBRACKET
-Rule 21    array -> LBRACKET values RBRACKET
-Rule 22    conector -> AND
-Rule 23    conector -> OR
-Rule 24    operComp -> LESSTHAN
-Rule 25    operComp -> GREATERTHAN
-Rule 26    condition -> value operComp value
-Rule 27    conditions -> condition
-Rule 28    conditions -> condition conector conditions
-Rule 29    when -> WHEN conditions code
-Rule 30    whens -> when
-Rule 31    whens -> whens
-Rule 32    case -> CASE whens END
-Rule 33    Sfunction -> DEF ID code END
-Rule 34    p_SfunctionINV -> ID
-Rule 35    p_SfunctionINV -> ID LPAREN RPAREN
-Rule 36    impression -> PRINT LPAREN values RPAREN
-Rule 37    impression -> PRINT values
-Rule 38    impression -> PUTS values
-Rule 39    impression -> PUTS LPAREN values RPAREN
-Rule 40    impression -> P LPAREN values RPAREN
-Rule 41    impression -> P values
-Rule 42    while_loop -> WHILE condition DO code END
-Rule 43    tupla -> LPAREN values RPAREN
+Rule 0     S' -> program
+Rule 1     program -> statement_list
+Rule 2     statement_list -> statement
+Rule 3     statement_list -> statement statement_list
+Rule 4     statement -> assign
+Rule 5     statement -> impression
+Rule 6     statement -> tupla
+Rule 7     statement -> conditions
+Rule 8     statement -> while_loop
+Rule 9     statement -> case
+Rule 10    statement -> Sfunction
+Rule 11    statement -> array
+Rule 12    statement -> p_SfunctionINV
+Rule 13    statement -> aritmeticExpresion
+Rule 14    statement -> operator
+Rule 15    assign -> INSTANCE_VAR ASSIGN value
+Rule 16    assign -> GLOBAL_VAR ASSIGN value
+Rule 17    value -> NUMBER
+Rule 18    value -> STRING
+Rule 19    value -> BOOLEAN
+Rule 20    values -> value
+Rule 21    values -> value COMMA values
+Rule 22    aritmeticExpresion -> value operator value
+Rule 23    operator -> PLUS
+Rule 24    operator -> MINUS
+Rule 25    operator -> TIMES
+Rule 26    operator -> DIVIDE
+Rule 27    operator -> MOD
+Rule 28    array -> LBRACKET RBRACKET
+Rule 29    array -> LBRACKET values RBRACKET
+Rule 30    conector -> AND
+Rule 31    conector -> OR
+Rule 32    operComp -> LESSTHAN
+Rule 33    operComp -> GREATERTHAN
+Rule 34    condition -> value operComp value
+Rule 35    conditions -> condition
+Rule 36    conditions -> condition conector conditions
+Rule 37    when -> WHEN conditions statement_list
+Rule 38    whens -> when
+Rule 39    whens -> whens
+Rule 40    case -> CASE whens END
+Rule 41    Sfunction -> DEF ID statement_list END
+Rule 42    p_SfunctionINV -> ID
+Rule 43    p_SfunctionINV -> ID LPAREN RPAREN
+Rule 44    impression -> PRINT LPAREN values RPAREN
+Rule 45    impression -> PRINT values
+Rule 46    impression -> PUTS values
+Rule 47    impression -> PUTS LPAREN values RPAREN
+Rule 48    impression -> P LPAREN values RPAREN
+Rule 49    impression -> P values
+Rule 50    while_loop -> WHILE condition DO statement_list END
+Rule 51    tupla -> LPAREN values RPAREN
 
 Terminals, with rules where they appear
 
-AND                  : 22
+AND                  : 30
 APOSTROPHE           : 
-ASSIGN               : 1 2
-BOOLEAN              : 5
+ASSIGN               : 15 16
+BOOLEAN              : 19
 BREAK                : 
-CASE                 : 32
+CASE                 : 40
 CLASS                : 
-COMMA                : 13
+COMMA                : 21
 CONST                : 
 DAPOSTROPHE          : 
-DEF                  : 33
-DIVIDE               : 18
-DO                   : 42
+DEF                  : 41
+DIVIDE               : 26
+DO                   : 50
 DOT                  : 
 ELSE                 : 
 ELSIF                : 
-END                  : 32 33 42
+END                  : 40 41 50
 EQUAL                : 
 FALSE                : 
 FOR                  : 
 GETS                 : 
-GLOBAL_VAR           : 2
+GLOBAL_VAR           : 16
 GREATEROREQUAL       : 
-GREATERTHAN          : 25
-ID                   : 33 34 35
+GREATERTHAN          : 33
+ID                   : 41 42 43
 IF                   : 
 IN                   : 
-INSTANCE_VAR         : 1
+INSTANCE_VAR         : 15
 LBRACE               : 
-LBRACKET             : 20 21
+LBRACKET             : 28 29
 LESSOREQUAL          : 
-LESSTHAN             : 24
-LPAREN               : 35 36 39 40 43
-MINUS                : 16
-MOD                  : 19
+LESSTHAN             : 32
+LPAREN               : 43 44 47 48 51
+MINUS                : 24
+MOD                  : 27
 NIL                  : 
 NONE                 : 
 NOT                  : 
 NOTEQUAL             : 
-NUMBER               : 3
-OR                   : 23
-P                    : 40 41
-PLUS                 : 15
-PRINT                : 36 37
-PUTS                 : 38 39
+NUMBER               : 17
+OR                   : 31
+P                    : 48 49
+PLUS                 : 23
+PRINT                : 44 45
+PUTS                 : 46 47
 RBRACE               : 
-RBRACKET             : 20 21
+RBRACKET             : 28 29
 RETURN               : 
-RPAREN               : 35 36 39 40 43
+RPAREN               : 43 44 47 48 51
 SEMICOLON            : 
-STRING               : 4
-TIMES                : 17
+STRING               : 18
+TIMES                : 25
 TRUE                 : 
-WHEN                 : 29
-WHILE                : 42
+WHEN                 : 37
+WHILE                : 50
 error                : 
 
 Nonterminals, with rules where they appear
 
-Sfunction            : 
-aritmeticExpresion   : 6
-array                : 
-assign               : 9 0
-case                 : 
-code                 : 29 33 42
-condition            : 27 28 42
-conditions           : 10 28 29
-conector             : 28
-impression           : 7
-operComp             : 26
-operator             : 14
-p_SfunctionINV       : 
-tupla                : 8
-value                : 1 2 12 13 14 14 26 26
-values               : 13 21 36 37 38 39 40 41 43
-when                 : 30
-whens                : 31 32
-while_loop           : 11
+Sfunction            : 10
+aritmeticExpresion   : 13
+array                : 11
+assign               : 4
+case                 : 9
+condition            : 35 36 50
+conditions           : 7 36 37
+conector             : 36
+impression           : 5
+operComp             : 34
+operator             : 14 22
+p_SfunctionINV       : 12
+program              : 0
+statement            : 2 3
+statement_list       : 1 3 37 41 50
+tupla                : 6
+value                : 15 16 20 21 22 22 34 34
+values               : 21 29 44 45 46 47 48 49 51
+when                 : 38
+whens                : 39 40
+while_loop           : 8
 
 Parsing method: LALR
 
 state 0
 
-    (0) S' -> . assign
-    (1) assign -> . INSTANCE_VAR ASSIGN value
-    (2) assign -> . GLOBAL_VAR ASSIGN value
+    (0) S' -> . program
+    (1) program -> . statement_list
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement statement_list
+    (4) statement -> . assign
+    (5) statement -> . impression
+    (6) statement -> . tupla
+    (7) statement -> . conditions
+    (8) statement -> . while_loop
+    (9) statement -> . case
+    (10) statement -> . Sfunction
+    (11) statement -> . array
+    (12) statement -> . p_SfunctionINV
+    (13) statement -> . aritmeticExpresion
+    (14) statement -> . operator
+    (15) assign -> . INSTANCE_VAR ASSIGN value
+    (16) assign -> . GLOBAL_VAR ASSIGN value
+    (44) impression -> . PRINT LPAREN values RPAREN
+    (45) impression -> . PRINT values
+    (46) impression -> . PUTS values
+    (47) impression -> . PUTS LPAREN values RPAREN
+    (48) impression -> . P LPAREN values RPAREN
+    (49) impression -> . P values
+    (51) tupla -> . LPAREN values RPAREN
+    (35) conditions -> . condition
+    (36) conditions -> . condition conector conditions
+    (50) while_loop -> . WHILE condition DO statement_list END
+    (40) case -> . CASE whens END
+    (41) Sfunction -> . DEF ID statement_list END
+    (28) array -> . LBRACKET RBRACKET
+    (29) array -> . LBRACKET values RBRACKET
+    (42) p_SfunctionINV -> . ID
+    (43) p_SfunctionINV -> . ID LPAREN RPAREN
+    (22) aritmeticExpresion -> . value operator value
+    (23) operator -> . PLUS
+    (24) operator -> . MINUS
+    (25) operator -> . TIMES
+    (26) operator -> . DIVIDE
+    (27) operator -> . MOD
+    (34) condition -> . value operComp value
+    (17) value -> . NUMBER
+    (18) value -> . STRING
+    (19) value -> . BOOLEAN
 
-    INSTANCE_VAR    shift and go to state 2
-    GLOBAL_VAR      shift and go to state 3
+    INSTANCE_VAR    shift and go to state 15
+    GLOBAL_VAR      shift and go to state 17
+    PRINT           shift and go to state 18
+    PUTS            shift and go to state 20
+    P               shift and go to state 21
+    LPAREN          shift and go to state 19
+    WHILE           shift and go to state 23
+    CASE            shift and go to state 24
+    DEF             shift and go to state 25
+    LBRACKET        shift and go to state 27
+    ID              shift and go to state 26
+    PLUS            shift and go to state 28
+    MINUS           shift and go to state 29
+    TIMES           shift and go to state 30
+    DIVIDE          shift and go to state 31
+    MOD             shift and go to state 32
+    NUMBER          shift and go to state 33
+    STRING          shift and go to state 34
+    BOOLEAN         shift and go to state 35
 
-    assign                         shift and go to state 1
+    program                        shift and go to state 1
+    statement_list                 shift and go to state 2
+    statement                      shift and go to state 3
+    assign                         shift and go to state 4
+    impression                     shift and go to state 5
+    tupla                          shift and go to state 6
+    conditions                     shift and go to state 7
+    while_loop                     shift and go to state 8
+    case                           shift and go to state 9
+    Sfunction                      shift and go to state 10
+    array                          shift and go to state 11
+    p_SfunctionINV                 shift and go to state 12
+    aritmeticExpresion             shift and go to state 13
+    operator                       shift and go to state 14
+    value                          shift and go to state 16
+    condition                      shift and go to state 22
 
 state 1
 
-    (0) S' -> assign .
+    (0) S' -> program .
 
 
 
 state 2
 
-    (1) assign -> INSTANCE_VAR . ASSIGN value
+    (1) program -> statement_list .
 
-    ASSIGN          shift and go to state 4
+    $end            reduce using rule 1 (program -> statement_list .)
 
 
 state 3
 
-    (2) assign -> GLOBAL_VAR . ASSIGN value
+    (2) statement_list -> statement .
+    (3) statement_list -> statement . statement_list
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement statement_list
+    (4) statement -> . assign
+    (5) statement -> . impression
+    (6) statement -> . tupla
+    (7) statement -> . conditions
+    (8) statement -> . while_loop
+    (9) statement -> . case
+    (10) statement -> . Sfunction
+    (11) statement -> . array
+    (12) statement -> . p_SfunctionINV
+    (13) statement -> . aritmeticExpresion
+    (14) statement -> . operator
+    (15) assign -> . INSTANCE_VAR ASSIGN value
+    (16) assign -> . GLOBAL_VAR ASSIGN value
+    (44) impression -> . PRINT LPAREN values RPAREN
+    (45) impression -> . PRINT values
+    (46) impression -> . PUTS values
+    (47) impression -> . PUTS LPAREN values RPAREN
+    (48) impression -> . P LPAREN values RPAREN
+    (49) impression -> . P values
+    (51) tupla -> . LPAREN values RPAREN
+    (35) conditions -> . condition
+    (36) conditions -> . condition conector conditions
+    (50) while_loop -> . WHILE condition DO statement_list END
+    (40) case -> . CASE whens END
+    (41) Sfunction -> . DEF ID statement_list END
+    (28) array -> . LBRACKET RBRACKET
+    (29) array -> . LBRACKET values RBRACKET
+    (42) p_SfunctionINV -> . ID
+    (43) p_SfunctionINV -> . ID LPAREN RPAREN
+    (22) aritmeticExpresion -> . value operator value
+    (23) operator -> . PLUS
+    (24) operator -> . MINUS
+    (25) operator -> . TIMES
+    (26) operator -> . DIVIDE
+    (27) operator -> . MOD
+    (34) condition -> . value operComp value
+    (17) value -> . NUMBER
+    (18) value -> . STRING
+    (19) value -> . BOOLEAN
 
-    ASSIGN          shift and go to state 5
+    $end            reduce using rule 2 (statement_list -> statement .)
+    END             reduce using rule 2 (statement_list -> statement .)
+    INSTANCE_VAR    shift and go to state 15
+    GLOBAL_VAR      shift and go to state 17
+    PRINT           shift and go to state 18
+    PUTS            shift and go to state 20
+    P               shift and go to state 21
+    LPAREN          shift and go to state 19
+    WHILE           shift and go to state 23
+    CASE            shift and go to state 24
+    DEF             shift and go to state 25
+    LBRACKET        shift and go to state 27
+    ID              shift and go to state 26
+    PLUS            shift and go to state 28
+    MINUS           shift and go to state 29
+    TIMES           shift and go to state 30
+    DIVIDE          shift and go to state 31
+    MOD             shift and go to state 32
+    NUMBER          shift and go to state 33
+    STRING          shift and go to state 34
+    BOOLEAN         shift and go to state 35
 
+    statement                      shift and go to state 3
+    statement_list                 shift and go to state 36
+    assign                         shift and go to state 4
+    impression                     shift and go to state 5
+    tupla                          shift and go to state 6
+    conditions                     shift and go to state 7
+    while_loop                     shift and go to state 8
+    case                           shift and go to state 9
+    Sfunction                      shift and go to state 10
+    array                          shift and go to state 11
+    p_SfunctionINV                 shift and go to state 12
+    aritmeticExpresion             shift and go to state 13
+    operator                       shift and go to state 14
+    value                          shift and go to state 16
+    condition                      shift and go to state 22
 
 state 4
 
-    (1) assign -> INSTANCE_VAR ASSIGN . value
-    (3) value -> . NUMBER
-    (4) value -> . STRING
-    (5) value -> . BOOLEAN
+    (4) statement -> assign .
 
-    NUMBER          shift and go to state 7
-    STRING          shift and go to state 8
-    BOOLEAN         shift and go to state 9
+    INSTANCE_VAR    reduce using rule 4 (statement -> assign .)
+    GLOBAL_VAR      reduce using rule 4 (statement -> assign .)
+    PRINT           reduce using rule 4 (statement -> assign .)
+    PUTS            reduce using rule 4 (statement -> assign .)
+    P               reduce using rule 4 (statement -> assign .)
+    LPAREN          reduce using rule 4 (statement -> assign .)
+    WHILE           reduce using rule 4 (statement -> assign .)
+    CASE            reduce using rule 4 (statement -> assign .)
+    DEF             reduce using rule 4 (statement -> assign .)
+    LBRACKET        reduce using rule 4 (statement -> assign .)
+    ID              reduce using rule 4 (statement -> assign .)
+    PLUS            reduce using rule 4 (statement -> assign .)
+    MINUS           reduce using rule 4 (statement -> assign .)
+    TIMES           reduce using rule 4 (statement -> assign .)
+    DIVIDE          reduce using rule 4 (statement -> assign .)
+    MOD             reduce using rule 4 (statement -> assign .)
+    NUMBER          reduce using rule 4 (statement -> assign .)
+    STRING          reduce using rule 4 (statement -> assign .)
+    BOOLEAN         reduce using rule 4 (statement -> assign .)
+    $end            reduce using rule 4 (statement -> assign .)
+    END             reduce using rule 4 (statement -> assign .)
 
-    value                          shift and go to state 6
 
 state 5
 
-    (2) assign -> GLOBAL_VAR ASSIGN . value
-    (3) value -> . NUMBER
-    (4) value -> . STRING
-    (5) value -> . BOOLEAN
+    (5) statement -> impression .
 
-    NUMBER          shift and go to state 7
-    STRING          shift and go to state 8
-    BOOLEAN         shift and go to state 9
+    INSTANCE_VAR    reduce using rule 5 (statement -> impression .)
+    GLOBAL_VAR      reduce using rule 5 (statement -> impression .)
+    PRINT           reduce using rule 5 (statement -> impression .)
+    PUTS            reduce using rule 5 (statement -> impression .)
+    P               reduce using rule 5 (statement -> impression .)
+    LPAREN          reduce using rule 5 (statement -> impression .)
+    WHILE           reduce using rule 5 (statement -> impression .)
+    CASE            reduce using rule 5 (statement -> impression .)
+    DEF             reduce using rule 5 (statement -> impression .)
+    LBRACKET        reduce using rule 5 (statement -> impression .)
+    ID              reduce using rule 5 (statement -> impression .)
+    PLUS            reduce using rule 5 (statement -> impression .)
+    MINUS           reduce using rule 5 (statement -> impression .)
+    TIMES           reduce using rule 5 (statement -> impression .)
+    DIVIDE          reduce using rule 5 (statement -> impression .)
+    MOD             reduce using rule 5 (statement -> impression .)
+    NUMBER          reduce using rule 5 (statement -> impression .)
+    STRING          reduce using rule 5 (statement -> impression .)
+    BOOLEAN         reduce using rule 5 (statement -> impression .)
+    $end            reduce using rule 5 (statement -> impression .)
+    END             reduce using rule 5 (statement -> impression .)
 
-    value                          shift and go to state 10
 
 state 6
 
-    (1) assign -> INSTANCE_VAR ASSIGN value .
+    (6) statement -> tupla .
 
-    $end            reduce using rule 1 (assign -> INSTANCE_VAR ASSIGN value .)
+    INSTANCE_VAR    reduce using rule 6 (statement -> tupla .)
+    GLOBAL_VAR      reduce using rule 6 (statement -> tupla .)
+    PRINT           reduce using rule 6 (statement -> tupla .)
+    PUTS            reduce using rule 6 (statement -> tupla .)
+    P               reduce using rule 6 (statement -> tupla .)
+    LPAREN          reduce using rule 6 (statement -> tupla .)
+    WHILE           reduce using rule 6 (statement -> tupla .)
+    CASE            reduce using rule 6 (statement -> tupla .)
+    DEF             reduce using rule 6 (statement -> tupla .)
+    LBRACKET        reduce using rule 6 (statement -> tupla .)
+    ID              reduce using rule 6 (statement -> tupla .)
+    PLUS            reduce using rule 6 (statement -> tupla .)
+    MINUS           reduce using rule 6 (statement -> tupla .)
+    TIMES           reduce using rule 6 (statement -> tupla .)
+    DIVIDE          reduce using rule 6 (statement -> tupla .)
+    MOD             reduce using rule 6 (statement -> tupla .)
+    NUMBER          reduce using rule 6 (statement -> tupla .)
+    STRING          reduce using rule 6 (statement -> tupla .)
+    BOOLEAN         reduce using rule 6 (statement -> tupla .)
+    $end            reduce using rule 6 (statement -> tupla .)
+    END             reduce using rule 6 (statement -> tupla .)
 
 
 state 7
 
-    (3) value -> NUMBER .
+    (7) statement -> conditions .
 
-    $end            reduce using rule 3 (value -> NUMBER .)
+    INSTANCE_VAR    reduce using rule 7 (statement -> conditions .)
+    GLOBAL_VAR      reduce using rule 7 (statement -> conditions .)
+    PRINT           reduce using rule 7 (statement -> conditions .)
+    PUTS            reduce using rule 7 (statement -> conditions .)
+    P               reduce using rule 7 (statement -> conditions .)
+    LPAREN          reduce using rule 7 (statement -> conditions .)
+    WHILE           reduce using rule 7 (statement -> conditions .)
+    CASE            reduce using rule 7 (statement -> conditions .)
+    DEF             reduce using rule 7 (statement -> conditions .)
+    LBRACKET        reduce using rule 7 (statement -> conditions .)
+    ID              reduce using rule 7 (statement -> conditions .)
+    PLUS            reduce using rule 7 (statement -> conditions .)
+    MINUS           reduce using rule 7 (statement -> conditions .)
+    TIMES           reduce using rule 7 (statement -> conditions .)
+    DIVIDE          reduce using rule 7 (statement -> conditions .)
+    MOD             reduce using rule 7 (statement -> conditions .)
+    NUMBER          reduce using rule 7 (statement -> conditions .)
+    STRING          reduce using rule 7 (statement -> conditions .)
+    BOOLEAN         reduce using rule 7 (statement -> conditions .)
+    $end            reduce using rule 7 (statement -> conditions .)
+    END             reduce using rule 7 (statement -> conditions .)
 
 
 state 8
 
-    (4) value -> STRING .
+    (8) statement -> while_loop .
 
-    $end            reduce using rule 4 (value -> STRING .)
+    INSTANCE_VAR    reduce using rule 8 (statement -> while_loop .)
+    GLOBAL_VAR      reduce using rule 8 (statement -> while_loop .)
+    PRINT           reduce using rule 8 (statement -> while_loop .)
+    PUTS            reduce using rule 8 (statement -> while_loop .)
+    P               reduce using rule 8 (statement -> while_loop .)
+    LPAREN          reduce using rule 8 (statement -> while_loop .)
+    WHILE           reduce using rule 8 (statement -> while_loop .)
+    CASE            reduce using rule 8 (statement -> while_loop .)
+    DEF             reduce using rule 8 (statement -> while_loop .)
+    LBRACKET        reduce using rule 8 (statement -> while_loop .)
+    ID              reduce using rule 8 (statement -> while_loop .)
+    PLUS            reduce using rule 8 (statement -> while_loop .)
+    MINUS           reduce using rule 8 (statement -> while_loop .)
+    TIMES           reduce using rule 8 (statement -> while_loop .)
+    DIVIDE          reduce using rule 8 (statement -> while_loop .)
+    MOD             reduce using rule 8 (statement -> while_loop .)
+    NUMBER          reduce using rule 8 (statement -> while_loop .)
+    STRING          reduce using rule 8 (statement -> while_loop .)
+    BOOLEAN         reduce using rule 8 (statement -> while_loop .)
+    $end            reduce using rule 8 (statement -> while_loop .)
+    END             reduce using rule 8 (statement -> while_loop .)
 
 
 state 9
 
-    (5) value -> BOOLEAN .
+    (9) statement -> case .
 
-    $end            reduce using rule 5 (value -> BOOLEAN .)
+    INSTANCE_VAR    reduce using rule 9 (statement -> case .)
+    GLOBAL_VAR      reduce using rule 9 (statement -> case .)
+    PRINT           reduce using rule 9 (statement -> case .)
+    PUTS            reduce using rule 9 (statement -> case .)
+    P               reduce using rule 9 (statement -> case .)
+    LPAREN          reduce using rule 9 (statement -> case .)
+    WHILE           reduce using rule 9 (statement -> case .)
+    CASE            reduce using rule 9 (statement -> case .)
+    DEF             reduce using rule 9 (statement -> case .)
+    LBRACKET        reduce using rule 9 (statement -> case .)
+    ID              reduce using rule 9 (statement -> case .)
+    PLUS            reduce using rule 9 (statement -> case .)
+    MINUS           reduce using rule 9 (statement -> case .)
+    TIMES           reduce using rule 9 (statement -> case .)
+    DIVIDE          reduce using rule 9 (statement -> case .)
+    MOD             reduce using rule 9 (statement -> case .)
+    NUMBER          reduce using rule 9 (statement -> case .)
+    STRING          reduce using rule 9 (statement -> case .)
+    BOOLEAN         reduce using rule 9 (statement -> case .)
+    $end            reduce using rule 9 (statement -> case .)
+    END             reduce using rule 9 (statement -> case .)
 
 
 state 10
 
-    (2) assign -> GLOBAL_VAR ASSIGN value .
+    (10) statement -> Sfunction .
 
-    $end            reduce using rule 2 (assign -> GLOBAL_VAR ASSIGN value .)
+    INSTANCE_VAR    reduce using rule 10 (statement -> Sfunction .)
+    GLOBAL_VAR      reduce using rule 10 (statement -> Sfunction .)
+    PRINT           reduce using rule 10 (statement -> Sfunction .)
+    PUTS            reduce using rule 10 (statement -> Sfunction .)
+    P               reduce using rule 10 (statement -> Sfunction .)
+    LPAREN          reduce using rule 10 (statement -> Sfunction .)
+    WHILE           reduce using rule 10 (statement -> Sfunction .)
+    CASE            reduce using rule 10 (statement -> Sfunction .)
+    DEF             reduce using rule 10 (statement -> Sfunction .)
+    LBRACKET        reduce using rule 10 (statement -> Sfunction .)
+    ID              reduce using rule 10 (statement -> Sfunction .)
+    PLUS            reduce using rule 10 (statement -> Sfunction .)
+    MINUS           reduce using rule 10 (statement -> Sfunction .)
+    TIMES           reduce using rule 10 (statement -> Sfunction .)
+    DIVIDE          reduce using rule 10 (statement -> Sfunction .)
+    MOD             reduce using rule 10 (statement -> Sfunction .)
+    NUMBER          reduce using rule 10 (statement -> Sfunction .)
+    STRING          reduce using rule 10 (statement -> Sfunction .)
+    BOOLEAN         reduce using rule 10 (statement -> Sfunction .)
+    $end            reduce using rule 10 (statement -> Sfunction .)
+    END             reduce using rule 10 (statement -> Sfunction .)
 
+
+state 11
+
+    (11) statement -> array .
+
+    INSTANCE_VAR    reduce using rule 11 (statement -> array .)
+    GLOBAL_VAR      reduce using rule 11 (statement -> array .)
+    PRINT           reduce using rule 11 (statement -> array .)
+    PUTS            reduce using rule 11 (statement -> array .)
+    P               reduce using rule 11 (statement -> array .)
+    LPAREN          reduce using rule 11 (statement -> array .)
+    WHILE           reduce using rule 11 (statement -> array .)
+    CASE            reduce using rule 11 (statement -> array .)
+    DEF             reduce using rule 11 (statement -> array .)
+    LBRACKET        reduce using rule 11 (statement -> array .)
+    ID              reduce using rule 11 (statement -> array .)
+    PLUS            reduce using rule 11 (statement -> array .)
+    MINUS           reduce using rule 11 (statement -> array .)
+    TIMES           reduce using rule 11 (statement -> array .)
+    DIVIDE          reduce using rule 11 (statement -> array .)
+    MOD             reduce using rule 11 (statement -> array .)
+    NUMBER          reduce using rule 11 (statement -> array .)
+    STRING          reduce using rule 11 (statement -> array .)
+    BOOLEAN         reduce using rule 11 (statement -> array .)
+    $end            reduce using rule 11 (statement -> array .)
+    END             reduce using rule 11 (statement -> array .)
+
+
+state 12
+
+    (12) statement -> p_SfunctionINV .
+
+    INSTANCE_VAR    reduce using rule 12 (statement -> p_SfunctionINV .)
+    GLOBAL_VAR      reduce using rule 12 (statement -> p_SfunctionINV .)
+    PRINT           reduce using rule 12 (statement -> p_SfunctionINV .)
+    PUTS            reduce using rule 12 (statement -> p_SfunctionINV .)
+    P               reduce using rule 12 (statement -> p_SfunctionINV .)
+    LPAREN          reduce using rule 12 (statement -> p_SfunctionINV .)
+    WHILE           reduce using rule 12 (statement -> p_SfunctionINV .)
+    CASE            reduce using rule 12 (statement -> p_SfunctionINV .)
+    DEF             reduce using rule 12 (statement -> p_SfunctionINV .)
+    LBRACKET        reduce using rule 12 (statement -> p_SfunctionINV .)
+    ID              reduce using rule 12 (statement -> p_SfunctionINV .)
+    PLUS            reduce using rule 12 (statement -> p_SfunctionINV .)
+    MINUS           reduce using rule 12 (statement -> p_SfunctionINV .)
+    TIMES           reduce using rule 12 (statement -> p_SfunctionINV .)
+    DIVIDE          reduce using rule 12 (statement -> p_SfunctionINV .)
+    MOD             reduce using rule 12 (statement -> p_SfunctionINV .)
+    NUMBER          reduce using rule 12 (statement -> p_SfunctionINV .)
+    STRING          reduce using rule 12 (statement -> p_SfunctionINV .)
+    BOOLEAN         reduce using rule 12 (statement -> p_SfunctionINV .)
+    $end            reduce using rule 12 (statement -> p_SfunctionINV .)
+    END             reduce using rule 12 (statement -> p_SfunctionINV .)
+
+
+state 13
+
+    (13) statement -> aritmeticExpresion .
+
+    INSTANCE_VAR    reduce using rule 13 (statement -> aritmeticExpresion .)
+    GLOBAL_VAR      reduce using rule 13 (statement -> aritmeticExpresion .)
+    PRINT           reduce using rule 13 (statement -> aritmeticExpresion .)
+    PUTS            reduce using rule 13 (statement -> aritmeticExpresion .)
+    P               reduce using rule 13 (statement -> aritmeticExpresion .)
+    LPAREN          reduce using rule 13 (statement -> aritmeticExpresion .)
+    WHILE           reduce using rule 13 (statement -> aritmeticExpresion .)
+    CASE            reduce using rule 13 (statement -> aritmeticExpresion .)
+    DEF             reduce using rule 13 (statement -> aritmeticExpresion .)
+    LBRACKET        reduce using rule 13 (statement -> aritmeticExpresion .)
+    ID              reduce using rule 13 (statement -> aritmeticExpresion .)
+    PLUS            reduce using rule 13 (statement -> aritmeticExpresion .)
+    MINUS           reduce using rule 13 (statement -> aritmeticExpresion .)
+    TIMES           reduce using rule 13 (statement -> aritmeticExpresion .)
+    DIVIDE          reduce using rule 13 (statement -> aritmeticExpresion .)
+    MOD             reduce using rule 13 (statement -> aritmeticExpresion .)
+    NUMBER          reduce using rule 13 (statement -> aritmeticExpresion .)
+    STRING          reduce using rule 13 (statement -> aritmeticExpresion .)
+    BOOLEAN         reduce using rule 13 (statement -> aritmeticExpresion .)
+    $end            reduce using rule 13 (statement -> aritmeticExpresion .)
+    END             reduce using rule 13 (statement -> aritmeticExpresion .)
+
+
+state 14
+
+    (14) statement -> operator .
+
+    INSTANCE_VAR    reduce using rule 14 (statement -> operator .)
+    GLOBAL_VAR      reduce using rule 14 (statement -> operator .)
+    PRINT           reduce using rule 14 (statement -> operator .)
+    PUTS            reduce using rule 14 (statement -> operator .)
+    P               reduce using rule 14 (statement -> operator .)
+    LPAREN          reduce using rule 14 (statement -> operator .)
+    WHILE           reduce using rule 14 (statement -> operator .)
+    CASE            reduce using rule 14 (statement -> operator .)
+    DEF             reduce using rule 14 (statement -> operator .)
+    LBRACKET        reduce using rule 14 (statement -> operator .)
+    ID              reduce using rule 14 (statement -> operator .)
+    PLUS            reduce using rule 14 (statement -> operator .)
+    MINUS           reduce using rule 14 (statement -> operator .)
+    TIMES           reduce using rule 14 (statement -> operator .)
+    DIVIDE          reduce using rule 14 (statement -> operator .)
+    MOD             reduce using rule 14 (statement -> operator .)
+    NUMBER          reduce using rule 14 (statement -> operator .)
+    STRING          reduce using rule 14 (statement -> operator .)
+    BOOLEAN         reduce using rule 14 (statement -> operator .)
+    $end            reduce using rule 14 (statement -> operator .)
+    END             reduce using rule 14 (statement -> operator .)
+
+
+state 15
+
+    (15) assign -> INSTANCE_VAR . ASSIGN value
+
+    ASSIGN          shift and go to state 37
+
+
+state 16
+
+    (22) aritmeticExpresion -> value . operator value
+    (34) condition -> value . operComp value
+    (23) operator -> . PLUS
+    (24) operator -> . MINUS
+    (25) operator -> . TIMES
+    (26) operator -> . DIVIDE
+    (27) operator -> . MOD
+    (32) operComp -> . LESSTHAN
+    (33) operComp -> . GREATERTHAN
+
+    PLUS            shift and go to state 28
+    MINUS           shift and go to state 29
+    TIMES           shift and go to state 30
+    DIVIDE          shift and go to state 31
+    MOD             shift and go to state 32
+    LESSTHAN        shift and go to state 40
+    GREATERTHAN     shift and go to state 41
+
+    operator                       shift and go to state 38
+    operComp                       shift and go to state 39
+
+state 17
+
+    (16) assign -> GLOBAL_VAR . ASSIGN value
+
+    ASSIGN          shift and go to state 42
+
+
+state 18
+
+    (44) impression -> PRINT . LPAREN values RPAREN
+    (45) impression -> PRINT . values
+    (20) values -> . value
+    (21) values -> . value COMMA values
+    (17) value -> . NUMBER
+    (18) value -> . STRING
+    (19) value -> . BOOLEAN
+
+    LPAREN          shift and go to state 43
+    NUMBER          shift and go to state 33
+    STRING          shift and go to state 34
+    BOOLEAN         shift and go to state 35
+
+    values                         shift and go to state 44
+    value                          shift and go to state 45
+
+state 19
+
+    (51) tupla -> LPAREN . values RPAREN
+    (20) values -> . value
+    (21) values -> . value COMMA values
+    (17) value -> . NUMBER
+    (18) value -> . STRING
+    (19) value -> . BOOLEAN
+
+    NUMBER          shift and go to state 33
+    STRING          shift and go to state 34
+    BOOLEAN         shift and go to state 35
+
+    values                         shift and go to state 46
+    value                          shift and go to state 45
+
+state 20
+
+    (46) impression -> PUTS . values
+    (47) impression -> PUTS . LPAREN values RPAREN
+    (20) values -> . value
+    (21) values -> . value COMMA values
+    (17) value -> . NUMBER
+    (18) value -> . STRING
+    (19) value -> . BOOLEAN
+
+    LPAREN          shift and go to state 48
+    NUMBER          shift and go to state 33
+    STRING          shift and go to state 34
+    BOOLEAN         shift and go to state 35
+
+    values                         shift and go to state 47
+    value                          shift and go to state 45
+
+state 21
+
+    (48) impression -> P . LPAREN values RPAREN
+    (49) impression -> P . values
+    (20) values -> . value
+    (21) values -> . value COMMA values
+    (17) value -> . NUMBER
+    (18) value -> . STRING
+    (19) value -> . BOOLEAN
+
+    LPAREN          shift and go to state 49
+    NUMBER          shift and go to state 33
+    STRING          shift and go to state 34
+    BOOLEAN         shift and go to state 35
+
+    values                         shift and go to state 50
+    value                          shift and go to state 45
+
+state 22
+
+    (35) conditions -> condition .
+    (36) conditions -> condition . conector conditions
+    (30) conector -> . AND
+    (31) conector -> . OR
+
+    INSTANCE_VAR    reduce using rule 35 (conditions -> condition .)
+    GLOBAL_VAR      reduce using rule 35 (conditions -> condition .)
+    PRINT           reduce using rule 35 (conditions -> condition .)
+    PUTS            reduce using rule 35 (conditions -> condition .)
+    P               reduce using rule 35 (conditions -> condition .)
+    LPAREN          reduce using rule 35 (conditions -> condition .)
+    WHILE           reduce using rule 35 (conditions -> condition .)
+    CASE            reduce using rule 35 (conditions -> condition .)
+    DEF             reduce using rule 35 (conditions -> condition .)
+    LBRACKET        reduce using rule 35 (conditions -> condition .)
+    ID              reduce using rule 35 (conditions -> condition .)
+    PLUS            reduce using rule 35 (conditions -> condition .)
+    MINUS           reduce using rule 35 (conditions -> condition .)
+    TIMES           reduce using rule 35 (conditions -> condition .)
+    DIVIDE          reduce using rule 35 (conditions -> condition .)
+    MOD             reduce using rule 35 (conditions -> condition .)
+    NUMBER          reduce using rule 35 (conditions -> condition .)
+    STRING          reduce using rule 35 (conditions -> condition .)
+    BOOLEAN         reduce using rule 35 (conditions -> condition .)
+    $end            reduce using rule 35 (conditions -> condition .)
+    END             reduce using rule 35 (conditions -> condition .)
+    AND             shift and go to state 52
+    OR              shift and go to state 53
+
+    conector                       shift and go to state 51
+
+state 23
+
+    (50) while_loop -> WHILE . condition DO statement_list END
+    (34) condition -> . value operComp value
+    (17) value -> . NUMBER
+    (18) value -> . STRING
+    (19) value -> . BOOLEAN
+
+    NUMBER          shift and go to state 33
+    STRING          shift and go to state 34
+    BOOLEAN         shift and go to state 35
+
+    condition                      shift and go to state 54
+    value                          shift and go to state 55
+
+state 24
+
+    (40) case -> CASE . whens END
+    (38) whens -> . when
+    (39) whens -> . whens
+    (37) when -> . WHEN conditions statement_list
+
+    WHEN            shift and go to state 58
+
+    whens                          shift and go to state 56
+    when                           shift and go to state 57
+
+state 25
+
+    (41) Sfunction -> DEF . ID statement_list END
+
+    ID              shift and go to state 59
+
+
+state 26
+
+    (42) p_SfunctionINV -> ID .
+    (43) p_SfunctionINV -> ID . LPAREN RPAREN
+
+  ! shift/reduce conflict for LPAREN resolved as shift
+    INSTANCE_VAR    reduce using rule 42 (p_SfunctionINV -> ID .)
+    GLOBAL_VAR      reduce using rule 42 (p_SfunctionINV -> ID .)
+    PRINT           reduce using rule 42 (p_SfunctionINV -> ID .)
+    PUTS            reduce using rule 42 (p_SfunctionINV -> ID .)
+    P               reduce using rule 42 (p_SfunctionINV -> ID .)
+    WHILE           reduce using rule 42 (p_SfunctionINV -> ID .)
+    CASE            reduce using rule 42 (p_SfunctionINV -> ID .)
+    DEF             reduce using rule 42 (p_SfunctionINV -> ID .)
+    LBRACKET        reduce using rule 42 (p_SfunctionINV -> ID .)
+    ID              reduce using rule 42 (p_SfunctionINV -> ID .)
+    PLUS            reduce using rule 42 (p_SfunctionINV -> ID .)
+    MINUS           reduce using rule 42 (p_SfunctionINV -> ID .)
+    TIMES           reduce using rule 42 (p_SfunctionINV -> ID .)
+    DIVIDE          reduce using rule 42 (p_SfunctionINV -> ID .)
+    MOD             reduce using rule 42 (p_SfunctionINV -> ID .)
+    NUMBER          reduce using rule 42 (p_SfunctionINV -> ID .)
+    STRING          reduce using rule 42 (p_SfunctionINV -> ID .)
+    BOOLEAN         reduce using rule 42 (p_SfunctionINV -> ID .)
+    $end            reduce using rule 42 (p_SfunctionINV -> ID .)
+    END             reduce using rule 42 (p_SfunctionINV -> ID .)
+    LPAREN          shift and go to state 60
+
+  ! LPAREN          [ reduce using rule 42 (p_SfunctionINV -> ID .) ]
+
+
+state 27
+
+    (28) array -> LBRACKET . RBRACKET
+    (29) array -> LBRACKET . values RBRACKET
+    (20) values -> . value
+    (21) values -> . value COMMA values
+    (17) value -> . NUMBER
+    (18) value -> . STRING
+    (19) value -> . BOOLEAN
+
+    RBRACKET        shift and go to state 61
+    NUMBER          shift and go to state 33
+    STRING          shift and go to state 34
+    BOOLEAN         shift and go to state 35
+
+    values                         shift and go to state 62
+    value                          shift and go to state 45
+
+state 28
+
+    (23) operator -> PLUS .
+
+    INSTANCE_VAR    reduce using rule 23 (operator -> PLUS .)
+    GLOBAL_VAR      reduce using rule 23 (operator -> PLUS .)
+    PRINT           reduce using rule 23 (operator -> PLUS .)
+    PUTS            reduce using rule 23 (operator -> PLUS .)
+    P               reduce using rule 23 (operator -> PLUS .)
+    LPAREN          reduce using rule 23 (operator -> PLUS .)
+    WHILE           reduce using rule 23 (operator -> PLUS .)
+    CASE            reduce using rule 23 (operator -> PLUS .)
+    DEF             reduce using rule 23 (operator -> PLUS .)
+    LBRACKET        reduce using rule 23 (operator -> PLUS .)
+    ID              reduce using rule 23 (operator -> PLUS .)
+    PLUS            reduce using rule 23 (operator -> PLUS .)
+    MINUS           reduce using rule 23 (operator -> PLUS .)
+    TIMES           reduce using rule 23 (operator -> PLUS .)
+    DIVIDE          reduce using rule 23 (operator -> PLUS .)
+    MOD             reduce using rule 23 (operator -> PLUS .)
+    NUMBER          reduce using rule 23 (operator -> PLUS .)
+    STRING          reduce using rule 23 (operator -> PLUS .)
+    BOOLEAN         reduce using rule 23 (operator -> PLUS .)
+    $end            reduce using rule 23 (operator -> PLUS .)
+    END             reduce using rule 23 (operator -> PLUS .)
+
+
+state 29
+
+    (24) operator -> MINUS .
+
+    INSTANCE_VAR    reduce using rule 24 (operator -> MINUS .)
+    GLOBAL_VAR      reduce using rule 24 (operator -> MINUS .)
+    PRINT           reduce using rule 24 (operator -> MINUS .)
+    PUTS            reduce using rule 24 (operator -> MINUS .)
+    P               reduce using rule 24 (operator -> MINUS .)
+    LPAREN          reduce using rule 24 (operator -> MINUS .)
+    WHILE           reduce using rule 24 (operator -> MINUS .)
+    CASE            reduce using rule 24 (operator -> MINUS .)
+    DEF             reduce using rule 24 (operator -> MINUS .)
+    LBRACKET        reduce using rule 24 (operator -> MINUS .)
+    ID              reduce using rule 24 (operator -> MINUS .)
+    PLUS            reduce using rule 24 (operator -> MINUS .)
+    MINUS           reduce using rule 24 (operator -> MINUS .)
+    TIMES           reduce using rule 24 (operator -> MINUS .)
+    DIVIDE          reduce using rule 24 (operator -> MINUS .)
+    MOD             reduce using rule 24 (operator -> MINUS .)
+    NUMBER          reduce using rule 24 (operator -> MINUS .)
+    STRING          reduce using rule 24 (operator -> MINUS .)
+    BOOLEAN         reduce using rule 24 (operator -> MINUS .)
+    $end            reduce using rule 24 (operator -> MINUS .)
+    END             reduce using rule 24 (operator -> MINUS .)
+
+
+state 30
+
+    (25) operator -> TIMES .
+
+    INSTANCE_VAR    reduce using rule 25 (operator -> TIMES .)
+    GLOBAL_VAR      reduce using rule 25 (operator -> TIMES .)
+    PRINT           reduce using rule 25 (operator -> TIMES .)
+    PUTS            reduce using rule 25 (operator -> TIMES .)
+    P               reduce using rule 25 (operator -> TIMES .)
+    LPAREN          reduce using rule 25 (operator -> TIMES .)
+    WHILE           reduce using rule 25 (operator -> TIMES .)
+    CASE            reduce using rule 25 (operator -> TIMES .)
+    DEF             reduce using rule 25 (operator -> TIMES .)
+    LBRACKET        reduce using rule 25 (operator -> TIMES .)
+    ID              reduce using rule 25 (operator -> TIMES .)
+    PLUS            reduce using rule 25 (operator -> TIMES .)
+    MINUS           reduce using rule 25 (operator -> TIMES .)
+    TIMES           reduce using rule 25 (operator -> TIMES .)
+    DIVIDE          reduce using rule 25 (operator -> TIMES .)
+    MOD             reduce using rule 25 (operator -> TIMES .)
+    NUMBER          reduce using rule 25 (operator -> TIMES .)
+    STRING          reduce using rule 25 (operator -> TIMES .)
+    BOOLEAN         reduce using rule 25 (operator -> TIMES .)
+    $end            reduce using rule 25 (operator -> TIMES .)
+    END             reduce using rule 25 (operator -> TIMES .)
+
+
+state 31
+
+    (26) operator -> DIVIDE .
+
+    INSTANCE_VAR    reduce using rule 26 (operator -> DIVIDE .)
+    GLOBAL_VAR      reduce using rule 26 (operator -> DIVIDE .)
+    PRINT           reduce using rule 26 (operator -> DIVIDE .)
+    PUTS            reduce using rule 26 (operator -> DIVIDE .)
+    P               reduce using rule 26 (operator -> DIVIDE .)
+    LPAREN          reduce using rule 26 (operator -> DIVIDE .)
+    WHILE           reduce using rule 26 (operator -> DIVIDE .)
+    CASE            reduce using rule 26 (operator -> DIVIDE .)
+    DEF             reduce using rule 26 (operator -> DIVIDE .)
+    LBRACKET        reduce using rule 26 (operator -> DIVIDE .)
+    ID              reduce using rule 26 (operator -> DIVIDE .)
+    PLUS            reduce using rule 26 (operator -> DIVIDE .)
+    MINUS           reduce using rule 26 (operator -> DIVIDE .)
+    TIMES           reduce using rule 26 (operator -> DIVIDE .)
+    DIVIDE          reduce using rule 26 (operator -> DIVIDE .)
+    MOD             reduce using rule 26 (operator -> DIVIDE .)
+    NUMBER          reduce using rule 26 (operator -> DIVIDE .)
+    STRING          reduce using rule 26 (operator -> DIVIDE .)
+    BOOLEAN         reduce using rule 26 (operator -> DIVIDE .)
+    $end            reduce using rule 26 (operator -> DIVIDE .)
+    END             reduce using rule 26 (operator -> DIVIDE .)
+
+
+state 32
+
+    (27) operator -> MOD .
+
+    INSTANCE_VAR    reduce using rule 27 (operator -> MOD .)
+    GLOBAL_VAR      reduce using rule 27 (operator -> MOD .)
+    PRINT           reduce using rule 27 (operator -> MOD .)
+    PUTS            reduce using rule 27 (operator -> MOD .)
+    P               reduce using rule 27 (operator -> MOD .)
+    LPAREN          reduce using rule 27 (operator -> MOD .)
+    WHILE           reduce using rule 27 (operator -> MOD .)
+    CASE            reduce using rule 27 (operator -> MOD .)
+    DEF             reduce using rule 27 (operator -> MOD .)
+    LBRACKET        reduce using rule 27 (operator -> MOD .)
+    ID              reduce using rule 27 (operator -> MOD .)
+    PLUS            reduce using rule 27 (operator -> MOD .)
+    MINUS           reduce using rule 27 (operator -> MOD .)
+    TIMES           reduce using rule 27 (operator -> MOD .)
+    DIVIDE          reduce using rule 27 (operator -> MOD .)
+    MOD             reduce using rule 27 (operator -> MOD .)
+    NUMBER          reduce using rule 27 (operator -> MOD .)
+    STRING          reduce using rule 27 (operator -> MOD .)
+    BOOLEAN         reduce using rule 27 (operator -> MOD .)
+    $end            reduce using rule 27 (operator -> MOD .)
+    END             reduce using rule 27 (operator -> MOD .)
+
+
+state 33
+
+    (17) value -> NUMBER .
+
+    PLUS            reduce using rule 17 (value -> NUMBER .)
+    MINUS           reduce using rule 17 (value -> NUMBER .)
+    TIMES           reduce using rule 17 (value -> NUMBER .)
+    DIVIDE          reduce using rule 17 (value -> NUMBER .)
+    MOD             reduce using rule 17 (value -> NUMBER .)
+    LESSTHAN        reduce using rule 17 (value -> NUMBER .)
+    GREATERTHAN     reduce using rule 17 (value -> NUMBER .)
+    COMMA           reduce using rule 17 (value -> NUMBER .)
+    INSTANCE_VAR    reduce using rule 17 (value -> NUMBER .)
+    GLOBAL_VAR      reduce using rule 17 (value -> NUMBER .)
+    PRINT           reduce using rule 17 (value -> NUMBER .)
+    PUTS            reduce using rule 17 (value -> NUMBER .)
+    P               reduce using rule 17 (value -> NUMBER .)
+    LPAREN          reduce using rule 17 (value -> NUMBER .)
+    WHILE           reduce using rule 17 (value -> NUMBER .)
+    CASE            reduce using rule 17 (value -> NUMBER .)
+    DEF             reduce using rule 17 (value -> NUMBER .)
+    LBRACKET        reduce using rule 17 (value -> NUMBER .)
+    ID              reduce using rule 17 (value -> NUMBER .)
+    NUMBER          reduce using rule 17 (value -> NUMBER .)
+    STRING          reduce using rule 17 (value -> NUMBER .)
+    BOOLEAN         reduce using rule 17 (value -> NUMBER .)
+    $end            reduce using rule 17 (value -> NUMBER .)
+    END             reduce using rule 17 (value -> NUMBER .)
+    RPAREN          reduce using rule 17 (value -> NUMBER .)
+    RBRACKET        reduce using rule 17 (value -> NUMBER .)
+    AND             reduce using rule 17 (value -> NUMBER .)
+    OR              reduce using rule 17 (value -> NUMBER .)
+    DO              reduce using rule 17 (value -> NUMBER .)
+
+
+state 34
+
+    (18) value -> STRING .
+
+    PLUS            reduce using rule 18 (value -> STRING .)
+    MINUS           reduce using rule 18 (value -> STRING .)
+    TIMES           reduce using rule 18 (value -> STRING .)
+    DIVIDE          reduce using rule 18 (value -> STRING .)
+    MOD             reduce using rule 18 (value -> STRING .)
+    LESSTHAN        reduce using rule 18 (value -> STRING .)
+    GREATERTHAN     reduce using rule 18 (value -> STRING .)
+    COMMA           reduce using rule 18 (value -> STRING .)
+    INSTANCE_VAR    reduce using rule 18 (value -> STRING .)
+    GLOBAL_VAR      reduce using rule 18 (value -> STRING .)
+    PRINT           reduce using rule 18 (value -> STRING .)
+    PUTS            reduce using rule 18 (value -> STRING .)
+    P               reduce using rule 18 (value -> STRING .)
+    LPAREN          reduce using rule 18 (value -> STRING .)
+    WHILE           reduce using rule 18 (value -> STRING .)
+    CASE            reduce using rule 18 (value -> STRING .)
+    DEF             reduce using rule 18 (value -> STRING .)
+    LBRACKET        reduce using rule 18 (value -> STRING .)
+    ID              reduce using rule 18 (value -> STRING .)
+    NUMBER          reduce using rule 18 (value -> STRING .)
+    STRING          reduce using rule 18 (value -> STRING .)
+    BOOLEAN         reduce using rule 18 (value -> STRING .)
+    $end            reduce using rule 18 (value -> STRING .)
+    END             reduce using rule 18 (value -> STRING .)
+    RPAREN          reduce using rule 18 (value -> STRING .)
+    RBRACKET        reduce using rule 18 (value -> STRING .)
+    AND             reduce using rule 18 (value -> STRING .)
+    OR              reduce using rule 18 (value -> STRING .)
+    DO              reduce using rule 18 (value -> STRING .)
+
+
+state 35
+
+    (19) value -> BOOLEAN .
+
+    PLUS            reduce using rule 19 (value -> BOOLEAN .)
+    MINUS           reduce using rule 19 (value -> BOOLEAN .)
+    TIMES           reduce using rule 19 (value -> BOOLEAN .)
+    DIVIDE          reduce using rule 19 (value -> BOOLEAN .)
+    MOD             reduce using rule 19 (value -> BOOLEAN .)
+    LESSTHAN        reduce using rule 19 (value -> BOOLEAN .)
+    GREATERTHAN     reduce using rule 19 (value -> BOOLEAN .)
+    COMMA           reduce using rule 19 (value -> BOOLEAN .)
+    INSTANCE_VAR    reduce using rule 19 (value -> BOOLEAN .)
+    GLOBAL_VAR      reduce using rule 19 (value -> BOOLEAN .)
+    PRINT           reduce using rule 19 (value -> BOOLEAN .)
+    PUTS            reduce using rule 19 (value -> BOOLEAN .)
+    P               reduce using rule 19 (value -> BOOLEAN .)
+    LPAREN          reduce using rule 19 (value -> BOOLEAN .)
+    WHILE           reduce using rule 19 (value -> BOOLEAN .)
+    CASE            reduce using rule 19 (value -> BOOLEAN .)
+    DEF             reduce using rule 19 (value -> BOOLEAN .)
+    LBRACKET        reduce using rule 19 (value -> BOOLEAN .)
+    ID              reduce using rule 19 (value -> BOOLEAN .)
+    NUMBER          reduce using rule 19 (value -> BOOLEAN .)
+    STRING          reduce using rule 19 (value -> BOOLEAN .)
+    BOOLEAN         reduce using rule 19 (value -> BOOLEAN .)
+    $end            reduce using rule 19 (value -> BOOLEAN .)
+    END             reduce using rule 19 (value -> BOOLEAN .)
+    RPAREN          reduce using rule 19 (value -> BOOLEAN .)
+    RBRACKET        reduce using rule 19 (value -> BOOLEAN .)
+    AND             reduce using rule 19 (value -> BOOLEAN .)
+    OR              reduce using rule 19 (value -> BOOLEAN .)
+    DO              reduce using rule 19 (value -> BOOLEAN .)
+
+
+state 36
+
+    (3) statement_list -> statement statement_list .
+
+    $end            reduce using rule 3 (statement_list -> statement statement_list .)
+    END             reduce using rule 3 (statement_list -> statement statement_list .)
+
+
+state 37
+
+    (15) assign -> INSTANCE_VAR ASSIGN . value
+    (17) value -> . NUMBER
+    (18) value -> . STRING
+    (19) value -> . BOOLEAN
+
+    NUMBER          shift and go to state 33
+    STRING          shift and go to state 34
+    BOOLEAN         shift and go to state 35
+
+    value                          shift and go to state 63
+
+state 38
+
+    (22) aritmeticExpresion -> value operator . value
+    (17) value -> . NUMBER
+    (18) value -> . STRING
+    (19) value -> . BOOLEAN
+
+    NUMBER          shift and go to state 33
+    STRING          shift and go to state 34
+    BOOLEAN         shift and go to state 35
+
+    value                          shift and go to state 64
+
+state 39
+
+    (34) condition -> value operComp . value
+    (17) value -> . NUMBER
+    (18) value -> . STRING
+    (19) value -> . BOOLEAN
+
+    NUMBER          shift and go to state 33
+    STRING          shift and go to state 34
+    BOOLEAN         shift and go to state 35
+
+    value                          shift and go to state 65
+
+state 40
+
+    (32) operComp -> LESSTHAN .
+
+    NUMBER          reduce using rule 32 (operComp -> LESSTHAN .)
+    STRING          reduce using rule 32 (operComp -> LESSTHAN .)
+    BOOLEAN         reduce using rule 32 (operComp -> LESSTHAN .)
+
+
+state 41
+
+    (33) operComp -> GREATERTHAN .
+
+    NUMBER          reduce using rule 33 (operComp -> GREATERTHAN .)
+    STRING          reduce using rule 33 (operComp -> GREATERTHAN .)
+    BOOLEAN         reduce using rule 33 (operComp -> GREATERTHAN .)
+
+
+state 42
+
+    (16) assign -> GLOBAL_VAR ASSIGN . value
+    (17) value -> . NUMBER
+    (18) value -> . STRING
+    (19) value -> . BOOLEAN
+
+    NUMBER          shift and go to state 33
+    STRING          shift and go to state 34
+    BOOLEAN         shift and go to state 35
+
+    value                          shift and go to state 66
+
+state 43
+
+    (44) impression -> PRINT LPAREN . values RPAREN
+    (20) values -> . value
+    (21) values -> . value COMMA values
+    (17) value -> . NUMBER
+    (18) value -> . STRING
+    (19) value -> . BOOLEAN
+
+    NUMBER          shift and go to state 33
+    STRING          shift and go to state 34
+    BOOLEAN         shift and go to state 35
+
+    values                         shift and go to state 67
+    value                          shift and go to state 45
+
+state 44
+
+    (45) impression -> PRINT values .
+
+    INSTANCE_VAR    reduce using rule 45 (impression -> PRINT values .)
+    GLOBAL_VAR      reduce using rule 45 (impression -> PRINT values .)
+    PRINT           reduce using rule 45 (impression -> PRINT values .)
+    PUTS            reduce using rule 45 (impression -> PRINT values .)
+    P               reduce using rule 45 (impression -> PRINT values .)
+    LPAREN          reduce using rule 45 (impression -> PRINT values .)
+    WHILE           reduce using rule 45 (impression -> PRINT values .)
+    CASE            reduce using rule 45 (impression -> PRINT values .)
+    DEF             reduce using rule 45 (impression -> PRINT values .)
+    LBRACKET        reduce using rule 45 (impression -> PRINT values .)
+    ID              reduce using rule 45 (impression -> PRINT values .)
+    PLUS            reduce using rule 45 (impression -> PRINT values .)
+    MINUS           reduce using rule 45 (impression -> PRINT values .)
+    TIMES           reduce using rule 45 (impression -> PRINT values .)
+    DIVIDE          reduce using rule 45 (impression -> PRINT values .)
+    MOD             reduce using rule 45 (impression -> PRINT values .)
+    NUMBER          reduce using rule 45 (impression -> PRINT values .)
+    STRING          reduce using rule 45 (impression -> PRINT values .)
+    BOOLEAN         reduce using rule 45 (impression -> PRINT values .)
+    $end            reduce using rule 45 (impression -> PRINT values .)
+    END             reduce using rule 45 (impression -> PRINT values .)
+
+
+state 45
+
+    (20) values -> value .
+    (21) values -> value . COMMA values
+
+    INSTANCE_VAR    reduce using rule 20 (values -> value .)
+    GLOBAL_VAR      reduce using rule 20 (values -> value .)
+    PRINT           reduce using rule 20 (values -> value .)
+    PUTS            reduce using rule 20 (values -> value .)
+    P               reduce using rule 20 (values -> value .)
+    LPAREN          reduce using rule 20 (values -> value .)
+    WHILE           reduce using rule 20 (values -> value .)
+    CASE            reduce using rule 20 (values -> value .)
+    DEF             reduce using rule 20 (values -> value .)
+    LBRACKET        reduce using rule 20 (values -> value .)
+    ID              reduce using rule 20 (values -> value .)
+    PLUS            reduce using rule 20 (values -> value .)
+    MINUS           reduce using rule 20 (values -> value .)
+    TIMES           reduce using rule 20 (values -> value .)
+    DIVIDE          reduce using rule 20 (values -> value .)
+    MOD             reduce using rule 20 (values -> value .)
+    NUMBER          reduce using rule 20 (values -> value .)
+    STRING          reduce using rule 20 (values -> value .)
+    BOOLEAN         reduce using rule 20 (values -> value .)
+    $end            reduce using rule 20 (values -> value .)
+    END             reduce using rule 20 (values -> value .)
+    RPAREN          reduce using rule 20 (values -> value .)
+    RBRACKET        reduce using rule 20 (values -> value .)
+    COMMA           shift and go to state 68
+
+
+state 46
+
+    (51) tupla -> LPAREN values . RPAREN
+
+    RPAREN          shift and go to state 69
+
+
+state 47
+
+    (46) impression -> PUTS values .
+
+    INSTANCE_VAR    reduce using rule 46 (impression -> PUTS values .)
+    GLOBAL_VAR      reduce using rule 46 (impression -> PUTS values .)
+    PRINT           reduce using rule 46 (impression -> PUTS values .)
+    PUTS            reduce using rule 46 (impression -> PUTS values .)
+    P               reduce using rule 46 (impression -> PUTS values .)
+    LPAREN          reduce using rule 46 (impression -> PUTS values .)
+    WHILE           reduce using rule 46 (impression -> PUTS values .)
+    CASE            reduce using rule 46 (impression -> PUTS values .)
+    DEF             reduce using rule 46 (impression -> PUTS values .)
+    LBRACKET        reduce using rule 46 (impression -> PUTS values .)
+    ID              reduce using rule 46 (impression -> PUTS values .)
+    PLUS            reduce using rule 46 (impression -> PUTS values .)
+    MINUS           reduce using rule 46 (impression -> PUTS values .)
+    TIMES           reduce using rule 46 (impression -> PUTS values .)
+    DIVIDE          reduce using rule 46 (impression -> PUTS values .)
+    MOD             reduce using rule 46 (impression -> PUTS values .)
+    NUMBER          reduce using rule 46 (impression -> PUTS values .)
+    STRING          reduce using rule 46 (impression -> PUTS values .)
+    BOOLEAN         reduce using rule 46 (impression -> PUTS values .)
+    $end            reduce using rule 46 (impression -> PUTS values .)
+    END             reduce using rule 46 (impression -> PUTS values .)
+
+
+state 48
+
+    (47) impression -> PUTS LPAREN . values RPAREN
+    (20) values -> . value
+    (21) values -> . value COMMA values
+    (17) value -> . NUMBER
+    (18) value -> . STRING
+    (19) value -> . BOOLEAN
+
+    NUMBER          shift and go to state 33
+    STRING          shift and go to state 34
+    BOOLEAN         shift and go to state 35
+
+    values                         shift and go to state 70
+    value                          shift and go to state 45
+
+state 49
+
+    (48) impression -> P LPAREN . values RPAREN
+    (20) values -> . value
+    (21) values -> . value COMMA values
+    (17) value -> . NUMBER
+    (18) value -> . STRING
+    (19) value -> . BOOLEAN
+
+    NUMBER          shift and go to state 33
+    STRING          shift and go to state 34
+    BOOLEAN         shift and go to state 35
+
+    values                         shift and go to state 71
+    value                          shift and go to state 45
+
+state 50
+
+    (49) impression -> P values .
+
+    INSTANCE_VAR    reduce using rule 49 (impression -> P values .)
+    GLOBAL_VAR      reduce using rule 49 (impression -> P values .)
+    PRINT           reduce using rule 49 (impression -> P values .)
+    PUTS            reduce using rule 49 (impression -> P values .)
+    P               reduce using rule 49 (impression -> P values .)
+    LPAREN          reduce using rule 49 (impression -> P values .)
+    WHILE           reduce using rule 49 (impression -> P values .)
+    CASE            reduce using rule 49 (impression -> P values .)
+    DEF             reduce using rule 49 (impression -> P values .)
+    LBRACKET        reduce using rule 49 (impression -> P values .)
+    ID              reduce using rule 49 (impression -> P values .)
+    PLUS            reduce using rule 49 (impression -> P values .)
+    MINUS           reduce using rule 49 (impression -> P values .)
+    TIMES           reduce using rule 49 (impression -> P values .)
+    DIVIDE          reduce using rule 49 (impression -> P values .)
+    MOD             reduce using rule 49 (impression -> P values .)
+    NUMBER          reduce using rule 49 (impression -> P values .)
+    STRING          reduce using rule 49 (impression -> P values .)
+    BOOLEAN         reduce using rule 49 (impression -> P values .)
+    $end            reduce using rule 49 (impression -> P values .)
+    END             reduce using rule 49 (impression -> P values .)
+
+
+state 51
+
+    (36) conditions -> condition conector . conditions
+    (35) conditions -> . condition
+    (36) conditions -> . condition conector conditions
+    (34) condition -> . value operComp value
+    (17) value -> . NUMBER
+    (18) value -> . STRING
+    (19) value -> . BOOLEAN
+
+    NUMBER          shift and go to state 33
+    STRING          shift and go to state 34
+    BOOLEAN         shift and go to state 35
+
+    condition                      shift and go to state 22
+    conditions                     shift and go to state 72
+    value                          shift and go to state 55
+
+state 52
+
+    (30) conector -> AND .
+
+    NUMBER          reduce using rule 30 (conector -> AND .)
+    STRING          reduce using rule 30 (conector -> AND .)
+    BOOLEAN         reduce using rule 30 (conector -> AND .)
+
+
+state 53
+
+    (31) conector -> OR .
+
+    NUMBER          reduce using rule 31 (conector -> OR .)
+    STRING          reduce using rule 31 (conector -> OR .)
+    BOOLEAN         reduce using rule 31 (conector -> OR .)
+
+
+state 54
+
+    (50) while_loop -> WHILE condition . DO statement_list END
+
+    DO              shift and go to state 73
+
+
+state 55
+
+    (34) condition -> value . operComp value
+    (32) operComp -> . LESSTHAN
+    (33) operComp -> . GREATERTHAN
+
+    LESSTHAN        shift and go to state 40
+    GREATERTHAN     shift and go to state 41
+
+    operComp                       shift and go to state 39
+
+state 56
+
+    (40) case -> CASE whens . END
+    (39) whens -> whens .
+
+  ! shift/reduce conflict for END resolved as shift
+    END             shift and go to state 74
+
+  ! END             [ reduce using rule 39 (whens -> whens .) ]
+
+
+state 57
+
+    (38) whens -> when .
+
+    END             reduce using rule 38 (whens -> when .)
+
+
+state 58
+
+    (37) when -> WHEN . conditions statement_list
+    (35) conditions -> . condition
+    (36) conditions -> . condition conector conditions
+    (34) condition -> . value operComp value
+    (17) value -> . NUMBER
+    (18) value -> . STRING
+    (19) value -> . BOOLEAN
+
+    NUMBER          shift and go to state 33
+    STRING          shift and go to state 34
+    BOOLEAN         shift and go to state 35
+
+    conditions                     shift and go to state 75
+    condition                      shift and go to state 22
+    value                          shift and go to state 55
+
+state 59
+
+    (41) Sfunction -> DEF ID . statement_list END
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement statement_list
+    (4) statement -> . assign
+    (5) statement -> . impression
+    (6) statement -> . tupla
+    (7) statement -> . conditions
+    (8) statement -> . while_loop
+    (9) statement -> . case
+    (10) statement -> . Sfunction
+    (11) statement -> . array
+    (12) statement -> . p_SfunctionINV
+    (13) statement -> . aritmeticExpresion
+    (14) statement -> . operator
+    (15) assign -> . INSTANCE_VAR ASSIGN value
+    (16) assign -> . GLOBAL_VAR ASSIGN value
+    (44) impression -> . PRINT LPAREN values RPAREN
+    (45) impression -> . PRINT values
+    (46) impression -> . PUTS values
+    (47) impression -> . PUTS LPAREN values RPAREN
+    (48) impression -> . P LPAREN values RPAREN
+    (49) impression -> . P values
+    (51) tupla -> . LPAREN values RPAREN
+    (35) conditions -> . condition
+    (36) conditions -> . condition conector conditions
+    (50) while_loop -> . WHILE condition DO statement_list END
+    (40) case -> . CASE whens END
+    (41) Sfunction -> . DEF ID statement_list END
+    (28) array -> . LBRACKET RBRACKET
+    (29) array -> . LBRACKET values RBRACKET
+    (42) p_SfunctionINV -> . ID
+    (43) p_SfunctionINV -> . ID LPAREN RPAREN
+    (22) aritmeticExpresion -> . value operator value
+    (23) operator -> . PLUS
+    (24) operator -> . MINUS
+    (25) operator -> . TIMES
+    (26) operator -> . DIVIDE
+    (27) operator -> . MOD
+    (34) condition -> . value operComp value
+    (17) value -> . NUMBER
+    (18) value -> . STRING
+    (19) value -> . BOOLEAN
+
+    INSTANCE_VAR    shift and go to state 15
+    GLOBAL_VAR      shift and go to state 17
+    PRINT           shift and go to state 18
+    PUTS            shift and go to state 20
+    P               shift and go to state 21
+    LPAREN          shift and go to state 19
+    WHILE           shift and go to state 23
+    CASE            shift and go to state 24
+    DEF             shift and go to state 25
+    LBRACKET        shift and go to state 27
+    ID              shift and go to state 26
+    PLUS            shift and go to state 28
+    MINUS           shift and go to state 29
+    TIMES           shift and go to state 30
+    DIVIDE          shift and go to state 31
+    MOD             shift and go to state 32
+    NUMBER          shift and go to state 33
+    STRING          shift and go to state 34
+    BOOLEAN         shift and go to state 35
+
+    statement_list                 shift and go to state 76
+    statement                      shift and go to state 3
+    assign                         shift and go to state 4
+    impression                     shift and go to state 5
+    tupla                          shift and go to state 6
+    conditions                     shift and go to state 7
+    while_loop                     shift and go to state 8
+    case                           shift and go to state 9
+    Sfunction                      shift and go to state 10
+    array                          shift and go to state 11
+    p_SfunctionINV                 shift and go to state 12
+    aritmeticExpresion             shift and go to state 13
+    operator                       shift and go to state 14
+    value                          shift and go to state 16
+    condition                      shift and go to state 22
+
+state 60
+
+    (43) p_SfunctionINV -> ID LPAREN . RPAREN
+
+    RPAREN          shift and go to state 77
+
+
+state 61
+
+    (28) array -> LBRACKET RBRACKET .
+
+    INSTANCE_VAR    reduce using rule 28 (array -> LBRACKET RBRACKET .)
+    GLOBAL_VAR      reduce using rule 28 (array -> LBRACKET RBRACKET .)
+    PRINT           reduce using rule 28 (array -> LBRACKET RBRACKET .)
+    PUTS            reduce using rule 28 (array -> LBRACKET RBRACKET .)
+    P               reduce using rule 28 (array -> LBRACKET RBRACKET .)
+    LPAREN          reduce using rule 28 (array -> LBRACKET RBRACKET .)
+    WHILE           reduce using rule 28 (array -> LBRACKET RBRACKET .)
+    CASE            reduce using rule 28 (array -> LBRACKET RBRACKET .)
+    DEF             reduce using rule 28 (array -> LBRACKET RBRACKET .)
+    LBRACKET        reduce using rule 28 (array -> LBRACKET RBRACKET .)
+    ID              reduce using rule 28 (array -> LBRACKET RBRACKET .)
+    PLUS            reduce using rule 28 (array -> LBRACKET RBRACKET .)
+    MINUS           reduce using rule 28 (array -> LBRACKET RBRACKET .)
+    TIMES           reduce using rule 28 (array -> LBRACKET RBRACKET .)
+    DIVIDE          reduce using rule 28 (array -> LBRACKET RBRACKET .)
+    MOD             reduce using rule 28 (array -> LBRACKET RBRACKET .)
+    NUMBER          reduce using rule 28 (array -> LBRACKET RBRACKET .)
+    STRING          reduce using rule 28 (array -> LBRACKET RBRACKET .)
+    BOOLEAN         reduce using rule 28 (array -> LBRACKET RBRACKET .)
+    $end            reduce using rule 28 (array -> LBRACKET RBRACKET .)
+    END             reduce using rule 28 (array -> LBRACKET RBRACKET .)
+
+
+state 62
+
+    (29) array -> LBRACKET values . RBRACKET
+
+    RBRACKET        shift and go to state 78
+
+
+state 63
+
+    (15) assign -> INSTANCE_VAR ASSIGN value .
+
+    INSTANCE_VAR    reduce using rule 15 (assign -> INSTANCE_VAR ASSIGN value .)
+    GLOBAL_VAR      reduce using rule 15 (assign -> INSTANCE_VAR ASSIGN value .)
+    PRINT           reduce using rule 15 (assign -> INSTANCE_VAR ASSIGN value .)
+    PUTS            reduce using rule 15 (assign -> INSTANCE_VAR ASSIGN value .)
+    P               reduce using rule 15 (assign -> INSTANCE_VAR ASSIGN value .)
+    LPAREN          reduce using rule 15 (assign -> INSTANCE_VAR ASSIGN value .)
+    WHILE           reduce using rule 15 (assign -> INSTANCE_VAR ASSIGN value .)
+    CASE            reduce using rule 15 (assign -> INSTANCE_VAR ASSIGN value .)
+    DEF             reduce using rule 15 (assign -> INSTANCE_VAR ASSIGN value .)
+    LBRACKET        reduce using rule 15 (assign -> INSTANCE_VAR ASSIGN value .)
+    ID              reduce using rule 15 (assign -> INSTANCE_VAR ASSIGN value .)
+    PLUS            reduce using rule 15 (assign -> INSTANCE_VAR ASSIGN value .)
+    MINUS           reduce using rule 15 (assign -> INSTANCE_VAR ASSIGN value .)
+    TIMES           reduce using rule 15 (assign -> INSTANCE_VAR ASSIGN value .)
+    DIVIDE          reduce using rule 15 (assign -> INSTANCE_VAR ASSIGN value .)
+    MOD             reduce using rule 15 (assign -> INSTANCE_VAR ASSIGN value .)
+    NUMBER          reduce using rule 15 (assign -> INSTANCE_VAR ASSIGN value .)
+    STRING          reduce using rule 15 (assign -> INSTANCE_VAR ASSIGN value .)
+    BOOLEAN         reduce using rule 15 (assign -> INSTANCE_VAR ASSIGN value .)
+    $end            reduce using rule 15 (assign -> INSTANCE_VAR ASSIGN value .)
+    END             reduce using rule 15 (assign -> INSTANCE_VAR ASSIGN value .)
+
+
+state 64
+
+    (22) aritmeticExpresion -> value operator value .
+
+    INSTANCE_VAR    reduce using rule 22 (aritmeticExpresion -> value operator value .)
+    GLOBAL_VAR      reduce using rule 22 (aritmeticExpresion -> value operator value .)
+    PRINT           reduce using rule 22 (aritmeticExpresion -> value operator value .)
+    PUTS            reduce using rule 22 (aritmeticExpresion -> value operator value .)
+    P               reduce using rule 22 (aritmeticExpresion -> value operator value .)
+    LPAREN          reduce using rule 22 (aritmeticExpresion -> value operator value .)
+    WHILE           reduce using rule 22 (aritmeticExpresion -> value operator value .)
+    CASE            reduce using rule 22 (aritmeticExpresion -> value operator value .)
+    DEF             reduce using rule 22 (aritmeticExpresion -> value operator value .)
+    LBRACKET        reduce using rule 22 (aritmeticExpresion -> value operator value .)
+    ID              reduce using rule 22 (aritmeticExpresion -> value operator value .)
+    PLUS            reduce using rule 22 (aritmeticExpresion -> value operator value .)
+    MINUS           reduce using rule 22 (aritmeticExpresion -> value operator value .)
+    TIMES           reduce using rule 22 (aritmeticExpresion -> value operator value .)
+    DIVIDE          reduce using rule 22 (aritmeticExpresion -> value operator value .)
+    MOD             reduce using rule 22 (aritmeticExpresion -> value operator value .)
+    NUMBER          reduce using rule 22 (aritmeticExpresion -> value operator value .)
+    STRING          reduce using rule 22 (aritmeticExpresion -> value operator value .)
+    BOOLEAN         reduce using rule 22 (aritmeticExpresion -> value operator value .)
+    $end            reduce using rule 22 (aritmeticExpresion -> value operator value .)
+    END             reduce using rule 22 (aritmeticExpresion -> value operator value .)
+
+
+state 65
+
+    (34) condition -> value operComp value .
+
+    AND             reduce using rule 34 (condition -> value operComp value .)
+    OR              reduce using rule 34 (condition -> value operComp value .)
+    INSTANCE_VAR    reduce using rule 34 (condition -> value operComp value .)
+    GLOBAL_VAR      reduce using rule 34 (condition -> value operComp value .)
+    PRINT           reduce using rule 34 (condition -> value operComp value .)
+    PUTS            reduce using rule 34 (condition -> value operComp value .)
+    P               reduce using rule 34 (condition -> value operComp value .)
+    LPAREN          reduce using rule 34 (condition -> value operComp value .)
+    WHILE           reduce using rule 34 (condition -> value operComp value .)
+    CASE            reduce using rule 34 (condition -> value operComp value .)
+    DEF             reduce using rule 34 (condition -> value operComp value .)
+    LBRACKET        reduce using rule 34 (condition -> value operComp value .)
+    ID              reduce using rule 34 (condition -> value operComp value .)
+    PLUS            reduce using rule 34 (condition -> value operComp value .)
+    MINUS           reduce using rule 34 (condition -> value operComp value .)
+    TIMES           reduce using rule 34 (condition -> value operComp value .)
+    DIVIDE          reduce using rule 34 (condition -> value operComp value .)
+    MOD             reduce using rule 34 (condition -> value operComp value .)
+    NUMBER          reduce using rule 34 (condition -> value operComp value .)
+    STRING          reduce using rule 34 (condition -> value operComp value .)
+    BOOLEAN         reduce using rule 34 (condition -> value operComp value .)
+    $end            reduce using rule 34 (condition -> value operComp value .)
+    END             reduce using rule 34 (condition -> value operComp value .)
+    DO              reduce using rule 34 (condition -> value operComp value .)
+
+
+state 66
+
+    (16) assign -> GLOBAL_VAR ASSIGN value .
+
+    INSTANCE_VAR    reduce using rule 16 (assign -> GLOBAL_VAR ASSIGN value .)
+    GLOBAL_VAR      reduce using rule 16 (assign -> GLOBAL_VAR ASSIGN value .)
+    PRINT           reduce using rule 16 (assign -> GLOBAL_VAR ASSIGN value .)
+    PUTS            reduce using rule 16 (assign -> GLOBAL_VAR ASSIGN value .)
+    P               reduce using rule 16 (assign -> GLOBAL_VAR ASSIGN value .)
+    LPAREN          reduce using rule 16 (assign -> GLOBAL_VAR ASSIGN value .)
+    WHILE           reduce using rule 16 (assign -> GLOBAL_VAR ASSIGN value .)
+    CASE            reduce using rule 16 (assign -> GLOBAL_VAR ASSIGN value .)
+    DEF             reduce using rule 16 (assign -> GLOBAL_VAR ASSIGN value .)
+    LBRACKET        reduce using rule 16 (assign -> GLOBAL_VAR ASSIGN value .)
+    ID              reduce using rule 16 (assign -> GLOBAL_VAR ASSIGN value .)
+    PLUS            reduce using rule 16 (assign -> GLOBAL_VAR ASSIGN value .)
+    MINUS           reduce using rule 16 (assign -> GLOBAL_VAR ASSIGN value .)
+    TIMES           reduce using rule 16 (assign -> GLOBAL_VAR ASSIGN value .)
+    DIVIDE          reduce using rule 16 (assign -> GLOBAL_VAR ASSIGN value .)
+    MOD             reduce using rule 16 (assign -> GLOBAL_VAR ASSIGN value .)
+    NUMBER          reduce using rule 16 (assign -> GLOBAL_VAR ASSIGN value .)
+    STRING          reduce using rule 16 (assign -> GLOBAL_VAR ASSIGN value .)
+    BOOLEAN         reduce using rule 16 (assign -> GLOBAL_VAR ASSIGN value .)
+    $end            reduce using rule 16 (assign -> GLOBAL_VAR ASSIGN value .)
+    END             reduce using rule 16 (assign -> GLOBAL_VAR ASSIGN value .)
+
+
+state 67
+
+    (44) impression -> PRINT LPAREN values . RPAREN
+
+    RPAREN          shift and go to state 79
+
+
+state 68
+
+    (21) values -> value COMMA . values
+    (20) values -> . value
+    (21) values -> . value COMMA values
+    (17) value -> . NUMBER
+    (18) value -> . STRING
+    (19) value -> . BOOLEAN
+
+    NUMBER          shift and go to state 33
+    STRING          shift and go to state 34
+    BOOLEAN         shift and go to state 35
+
+    value                          shift and go to state 45
+    values                         shift and go to state 80
+
+state 69
+
+    (51) tupla -> LPAREN values RPAREN .
+
+    INSTANCE_VAR    reduce using rule 51 (tupla -> LPAREN values RPAREN .)
+    GLOBAL_VAR      reduce using rule 51 (tupla -> LPAREN values RPAREN .)
+    PRINT           reduce using rule 51 (tupla -> LPAREN values RPAREN .)
+    PUTS            reduce using rule 51 (tupla -> LPAREN values RPAREN .)
+    P               reduce using rule 51 (tupla -> LPAREN values RPAREN .)
+    LPAREN          reduce using rule 51 (tupla -> LPAREN values RPAREN .)
+    WHILE           reduce using rule 51 (tupla -> LPAREN values RPAREN .)
+    CASE            reduce using rule 51 (tupla -> LPAREN values RPAREN .)
+    DEF             reduce using rule 51 (tupla -> LPAREN values RPAREN .)
+    LBRACKET        reduce using rule 51 (tupla -> LPAREN values RPAREN .)
+    ID              reduce using rule 51 (tupla -> LPAREN values RPAREN .)
+    PLUS            reduce using rule 51 (tupla -> LPAREN values RPAREN .)
+    MINUS           reduce using rule 51 (tupla -> LPAREN values RPAREN .)
+    TIMES           reduce using rule 51 (tupla -> LPAREN values RPAREN .)
+    DIVIDE          reduce using rule 51 (tupla -> LPAREN values RPAREN .)
+    MOD             reduce using rule 51 (tupla -> LPAREN values RPAREN .)
+    NUMBER          reduce using rule 51 (tupla -> LPAREN values RPAREN .)
+    STRING          reduce using rule 51 (tupla -> LPAREN values RPAREN .)
+    BOOLEAN         reduce using rule 51 (tupla -> LPAREN values RPAREN .)
+    $end            reduce using rule 51 (tupla -> LPAREN values RPAREN .)
+    END             reduce using rule 51 (tupla -> LPAREN values RPAREN .)
+
+
+state 70
+
+    (47) impression -> PUTS LPAREN values . RPAREN
+
+    RPAREN          shift and go to state 81
+
+
+state 71
+
+    (48) impression -> P LPAREN values . RPAREN
+
+    RPAREN          shift and go to state 82
+
+
+state 72
+
+    (36) conditions -> condition conector conditions .
+
+    INSTANCE_VAR    reduce using rule 36 (conditions -> condition conector conditions .)
+    GLOBAL_VAR      reduce using rule 36 (conditions -> condition conector conditions .)
+    PRINT           reduce using rule 36 (conditions -> condition conector conditions .)
+    PUTS            reduce using rule 36 (conditions -> condition conector conditions .)
+    P               reduce using rule 36 (conditions -> condition conector conditions .)
+    LPAREN          reduce using rule 36 (conditions -> condition conector conditions .)
+    WHILE           reduce using rule 36 (conditions -> condition conector conditions .)
+    CASE            reduce using rule 36 (conditions -> condition conector conditions .)
+    DEF             reduce using rule 36 (conditions -> condition conector conditions .)
+    LBRACKET        reduce using rule 36 (conditions -> condition conector conditions .)
+    ID              reduce using rule 36 (conditions -> condition conector conditions .)
+    PLUS            reduce using rule 36 (conditions -> condition conector conditions .)
+    MINUS           reduce using rule 36 (conditions -> condition conector conditions .)
+    TIMES           reduce using rule 36 (conditions -> condition conector conditions .)
+    DIVIDE          reduce using rule 36 (conditions -> condition conector conditions .)
+    MOD             reduce using rule 36 (conditions -> condition conector conditions .)
+    NUMBER          reduce using rule 36 (conditions -> condition conector conditions .)
+    STRING          reduce using rule 36 (conditions -> condition conector conditions .)
+    BOOLEAN         reduce using rule 36 (conditions -> condition conector conditions .)
+    $end            reduce using rule 36 (conditions -> condition conector conditions .)
+    END             reduce using rule 36 (conditions -> condition conector conditions .)
+
+
+state 73
+
+    (50) while_loop -> WHILE condition DO . statement_list END
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement statement_list
+    (4) statement -> . assign
+    (5) statement -> . impression
+    (6) statement -> . tupla
+    (7) statement -> . conditions
+    (8) statement -> . while_loop
+    (9) statement -> . case
+    (10) statement -> . Sfunction
+    (11) statement -> . array
+    (12) statement -> . p_SfunctionINV
+    (13) statement -> . aritmeticExpresion
+    (14) statement -> . operator
+    (15) assign -> . INSTANCE_VAR ASSIGN value
+    (16) assign -> . GLOBAL_VAR ASSIGN value
+    (44) impression -> . PRINT LPAREN values RPAREN
+    (45) impression -> . PRINT values
+    (46) impression -> . PUTS values
+    (47) impression -> . PUTS LPAREN values RPAREN
+    (48) impression -> . P LPAREN values RPAREN
+    (49) impression -> . P values
+    (51) tupla -> . LPAREN values RPAREN
+    (35) conditions -> . condition
+    (36) conditions -> . condition conector conditions
+    (50) while_loop -> . WHILE condition DO statement_list END
+    (40) case -> . CASE whens END
+    (41) Sfunction -> . DEF ID statement_list END
+    (28) array -> . LBRACKET RBRACKET
+    (29) array -> . LBRACKET values RBRACKET
+    (42) p_SfunctionINV -> . ID
+    (43) p_SfunctionINV -> . ID LPAREN RPAREN
+    (22) aritmeticExpresion -> . value operator value
+    (23) operator -> . PLUS
+    (24) operator -> . MINUS
+    (25) operator -> . TIMES
+    (26) operator -> . DIVIDE
+    (27) operator -> . MOD
+    (34) condition -> . value operComp value
+    (17) value -> . NUMBER
+    (18) value -> . STRING
+    (19) value -> . BOOLEAN
+
+    INSTANCE_VAR    shift and go to state 15
+    GLOBAL_VAR      shift and go to state 17
+    PRINT           shift and go to state 18
+    PUTS            shift and go to state 20
+    P               shift and go to state 21
+    LPAREN          shift and go to state 19
+    WHILE           shift and go to state 23
+    CASE            shift and go to state 24
+    DEF             shift and go to state 25
+    LBRACKET        shift and go to state 27
+    ID              shift and go to state 26
+    PLUS            shift and go to state 28
+    MINUS           shift and go to state 29
+    TIMES           shift and go to state 30
+    DIVIDE          shift and go to state 31
+    MOD             shift and go to state 32
+    NUMBER          shift and go to state 33
+    STRING          shift and go to state 34
+    BOOLEAN         shift and go to state 35
+
+    condition                      shift and go to state 22
+    statement_list                 shift and go to state 83
+    statement                      shift and go to state 3
+    assign                         shift and go to state 4
+    impression                     shift and go to state 5
+    tupla                          shift and go to state 6
+    conditions                     shift and go to state 7
+    while_loop                     shift and go to state 8
+    case                           shift and go to state 9
+    Sfunction                      shift and go to state 10
+    array                          shift and go to state 11
+    p_SfunctionINV                 shift and go to state 12
+    aritmeticExpresion             shift and go to state 13
+    operator                       shift and go to state 14
+    value                          shift and go to state 16
+
+state 74
+
+    (40) case -> CASE whens END .
+
+    INSTANCE_VAR    reduce using rule 40 (case -> CASE whens END .)
+    GLOBAL_VAR      reduce using rule 40 (case -> CASE whens END .)
+    PRINT           reduce using rule 40 (case -> CASE whens END .)
+    PUTS            reduce using rule 40 (case -> CASE whens END .)
+    P               reduce using rule 40 (case -> CASE whens END .)
+    LPAREN          reduce using rule 40 (case -> CASE whens END .)
+    WHILE           reduce using rule 40 (case -> CASE whens END .)
+    CASE            reduce using rule 40 (case -> CASE whens END .)
+    DEF             reduce using rule 40 (case -> CASE whens END .)
+    LBRACKET        reduce using rule 40 (case -> CASE whens END .)
+    ID              reduce using rule 40 (case -> CASE whens END .)
+    PLUS            reduce using rule 40 (case -> CASE whens END .)
+    MINUS           reduce using rule 40 (case -> CASE whens END .)
+    TIMES           reduce using rule 40 (case -> CASE whens END .)
+    DIVIDE          reduce using rule 40 (case -> CASE whens END .)
+    MOD             reduce using rule 40 (case -> CASE whens END .)
+    NUMBER          reduce using rule 40 (case -> CASE whens END .)
+    STRING          reduce using rule 40 (case -> CASE whens END .)
+    BOOLEAN         reduce using rule 40 (case -> CASE whens END .)
+    $end            reduce using rule 40 (case -> CASE whens END .)
+    END             reduce using rule 40 (case -> CASE whens END .)
+
+
+state 75
+
+    (37) when -> WHEN conditions . statement_list
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement statement_list
+    (4) statement -> . assign
+    (5) statement -> . impression
+    (6) statement -> . tupla
+    (7) statement -> . conditions
+    (8) statement -> . while_loop
+    (9) statement -> . case
+    (10) statement -> . Sfunction
+    (11) statement -> . array
+    (12) statement -> . p_SfunctionINV
+    (13) statement -> . aritmeticExpresion
+    (14) statement -> . operator
+    (15) assign -> . INSTANCE_VAR ASSIGN value
+    (16) assign -> . GLOBAL_VAR ASSIGN value
+    (44) impression -> . PRINT LPAREN values RPAREN
+    (45) impression -> . PRINT values
+    (46) impression -> . PUTS values
+    (47) impression -> . PUTS LPAREN values RPAREN
+    (48) impression -> . P LPAREN values RPAREN
+    (49) impression -> . P values
+    (51) tupla -> . LPAREN values RPAREN
+    (35) conditions -> . condition
+    (36) conditions -> . condition conector conditions
+    (50) while_loop -> . WHILE condition DO statement_list END
+    (40) case -> . CASE whens END
+    (41) Sfunction -> . DEF ID statement_list END
+    (28) array -> . LBRACKET RBRACKET
+    (29) array -> . LBRACKET values RBRACKET
+    (42) p_SfunctionINV -> . ID
+    (43) p_SfunctionINV -> . ID LPAREN RPAREN
+    (22) aritmeticExpresion -> . value operator value
+    (23) operator -> . PLUS
+    (24) operator -> . MINUS
+    (25) operator -> . TIMES
+    (26) operator -> . DIVIDE
+    (27) operator -> . MOD
+    (34) condition -> . value operComp value
+    (17) value -> . NUMBER
+    (18) value -> . STRING
+    (19) value -> . BOOLEAN
+
+    INSTANCE_VAR    shift and go to state 15
+    GLOBAL_VAR      shift and go to state 17
+    PRINT           shift and go to state 18
+    PUTS            shift and go to state 20
+    P               shift and go to state 21
+    LPAREN          shift and go to state 19
+    WHILE           shift and go to state 23
+    CASE            shift and go to state 24
+    DEF             shift and go to state 25
+    LBRACKET        shift and go to state 27
+    ID              shift and go to state 26
+    PLUS            shift and go to state 28
+    MINUS           shift and go to state 29
+    TIMES           shift and go to state 30
+    DIVIDE          shift and go to state 31
+    MOD             shift and go to state 32
+    NUMBER          shift and go to state 33
+    STRING          shift and go to state 34
+    BOOLEAN         shift and go to state 35
+
+    conditions                     shift and go to state 7
+    statement_list                 shift and go to state 84
+    statement                      shift and go to state 3
+    assign                         shift and go to state 4
+    impression                     shift and go to state 5
+    tupla                          shift and go to state 6
+    while_loop                     shift and go to state 8
+    case                           shift and go to state 9
+    Sfunction                      shift and go to state 10
+    array                          shift and go to state 11
+    p_SfunctionINV                 shift and go to state 12
+    aritmeticExpresion             shift and go to state 13
+    operator                       shift and go to state 14
+    value                          shift and go to state 16
+    condition                      shift and go to state 22
+
+state 76
+
+    (41) Sfunction -> DEF ID statement_list . END
+
+    END             shift and go to state 85
+
+
+state 77
+
+    (43) p_SfunctionINV -> ID LPAREN RPAREN .
+
+    INSTANCE_VAR    reduce using rule 43 (p_SfunctionINV -> ID LPAREN RPAREN .)
+    GLOBAL_VAR      reduce using rule 43 (p_SfunctionINV -> ID LPAREN RPAREN .)
+    PRINT           reduce using rule 43 (p_SfunctionINV -> ID LPAREN RPAREN .)
+    PUTS            reduce using rule 43 (p_SfunctionINV -> ID LPAREN RPAREN .)
+    P               reduce using rule 43 (p_SfunctionINV -> ID LPAREN RPAREN .)
+    LPAREN          reduce using rule 43 (p_SfunctionINV -> ID LPAREN RPAREN .)
+    WHILE           reduce using rule 43 (p_SfunctionINV -> ID LPAREN RPAREN .)
+    CASE            reduce using rule 43 (p_SfunctionINV -> ID LPAREN RPAREN .)
+    DEF             reduce using rule 43 (p_SfunctionINV -> ID LPAREN RPAREN .)
+    LBRACKET        reduce using rule 43 (p_SfunctionINV -> ID LPAREN RPAREN .)
+    ID              reduce using rule 43 (p_SfunctionINV -> ID LPAREN RPAREN .)
+    PLUS            reduce using rule 43 (p_SfunctionINV -> ID LPAREN RPAREN .)
+    MINUS           reduce using rule 43 (p_SfunctionINV -> ID LPAREN RPAREN .)
+    TIMES           reduce using rule 43 (p_SfunctionINV -> ID LPAREN RPAREN .)
+    DIVIDE          reduce using rule 43 (p_SfunctionINV -> ID LPAREN RPAREN .)
+    MOD             reduce using rule 43 (p_SfunctionINV -> ID LPAREN RPAREN .)
+    NUMBER          reduce using rule 43 (p_SfunctionINV -> ID LPAREN RPAREN .)
+    STRING          reduce using rule 43 (p_SfunctionINV -> ID LPAREN RPAREN .)
+    BOOLEAN         reduce using rule 43 (p_SfunctionINV -> ID LPAREN RPAREN .)
+    $end            reduce using rule 43 (p_SfunctionINV -> ID LPAREN RPAREN .)
+    END             reduce using rule 43 (p_SfunctionINV -> ID LPAREN RPAREN .)
+
+
+state 78
+
+    (29) array -> LBRACKET values RBRACKET .
+
+    INSTANCE_VAR    reduce using rule 29 (array -> LBRACKET values RBRACKET .)
+    GLOBAL_VAR      reduce using rule 29 (array -> LBRACKET values RBRACKET .)
+    PRINT           reduce using rule 29 (array -> LBRACKET values RBRACKET .)
+    PUTS            reduce using rule 29 (array -> LBRACKET values RBRACKET .)
+    P               reduce using rule 29 (array -> LBRACKET values RBRACKET .)
+    LPAREN          reduce using rule 29 (array -> LBRACKET values RBRACKET .)
+    WHILE           reduce using rule 29 (array -> LBRACKET values RBRACKET .)
+    CASE            reduce using rule 29 (array -> LBRACKET values RBRACKET .)
+    DEF             reduce using rule 29 (array -> LBRACKET values RBRACKET .)
+    LBRACKET        reduce using rule 29 (array -> LBRACKET values RBRACKET .)
+    ID              reduce using rule 29 (array -> LBRACKET values RBRACKET .)
+    PLUS            reduce using rule 29 (array -> LBRACKET values RBRACKET .)
+    MINUS           reduce using rule 29 (array -> LBRACKET values RBRACKET .)
+    TIMES           reduce using rule 29 (array -> LBRACKET values RBRACKET .)
+    DIVIDE          reduce using rule 29 (array -> LBRACKET values RBRACKET .)
+    MOD             reduce using rule 29 (array -> LBRACKET values RBRACKET .)
+    NUMBER          reduce using rule 29 (array -> LBRACKET values RBRACKET .)
+    STRING          reduce using rule 29 (array -> LBRACKET values RBRACKET .)
+    BOOLEAN         reduce using rule 29 (array -> LBRACKET values RBRACKET .)
+    $end            reduce using rule 29 (array -> LBRACKET values RBRACKET .)
+    END             reduce using rule 29 (array -> LBRACKET values RBRACKET .)
+
+
+state 79
+
+    (44) impression -> PRINT LPAREN values RPAREN .
+
+    INSTANCE_VAR    reduce using rule 44 (impression -> PRINT LPAREN values RPAREN .)
+    GLOBAL_VAR      reduce using rule 44 (impression -> PRINT LPAREN values RPAREN .)
+    PRINT           reduce using rule 44 (impression -> PRINT LPAREN values RPAREN .)
+    PUTS            reduce using rule 44 (impression -> PRINT LPAREN values RPAREN .)
+    P               reduce using rule 44 (impression -> PRINT LPAREN values RPAREN .)
+    LPAREN          reduce using rule 44 (impression -> PRINT LPAREN values RPAREN .)
+    WHILE           reduce using rule 44 (impression -> PRINT LPAREN values RPAREN .)
+    CASE            reduce using rule 44 (impression -> PRINT LPAREN values RPAREN .)
+    DEF             reduce using rule 44 (impression -> PRINT LPAREN values RPAREN .)
+    LBRACKET        reduce using rule 44 (impression -> PRINT LPAREN values RPAREN .)
+    ID              reduce using rule 44 (impression -> PRINT LPAREN values RPAREN .)
+    PLUS            reduce using rule 44 (impression -> PRINT LPAREN values RPAREN .)
+    MINUS           reduce using rule 44 (impression -> PRINT LPAREN values RPAREN .)
+    TIMES           reduce using rule 44 (impression -> PRINT LPAREN values RPAREN .)
+    DIVIDE          reduce using rule 44 (impression -> PRINT LPAREN values RPAREN .)
+    MOD             reduce using rule 44 (impression -> PRINT LPAREN values RPAREN .)
+    NUMBER          reduce using rule 44 (impression -> PRINT LPAREN values RPAREN .)
+    STRING          reduce using rule 44 (impression -> PRINT LPAREN values RPAREN .)
+    BOOLEAN         reduce using rule 44 (impression -> PRINT LPAREN values RPAREN .)
+    $end            reduce using rule 44 (impression -> PRINT LPAREN values RPAREN .)
+    END             reduce using rule 44 (impression -> PRINT LPAREN values RPAREN .)
+
+
+state 80
+
+    (21) values -> value COMMA values .
+
+    INSTANCE_VAR    reduce using rule 21 (values -> value COMMA values .)
+    GLOBAL_VAR      reduce using rule 21 (values -> value COMMA values .)
+    PRINT           reduce using rule 21 (values -> value COMMA values .)
+    PUTS            reduce using rule 21 (values -> value COMMA values .)
+    P               reduce using rule 21 (values -> value COMMA values .)
+    LPAREN          reduce using rule 21 (values -> value COMMA values .)
+    WHILE           reduce using rule 21 (values -> value COMMA values .)
+    CASE            reduce using rule 21 (values -> value COMMA values .)
+    DEF             reduce using rule 21 (values -> value COMMA values .)
+    LBRACKET        reduce using rule 21 (values -> value COMMA values .)
+    ID              reduce using rule 21 (values -> value COMMA values .)
+    PLUS            reduce using rule 21 (values -> value COMMA values .)
+    MINUS           reduce using rule 21 (values -> value COMMA values .)
+    TIMES           reduce using rule 21 (values -> value COMMA values .)
+    DIVIDE          reduce using rule 21 (values -> value COMMA values .)
+    MOD             reduce using rule 21 (values -> value COMMA values .)
+    NUMBER          reduce using rule 21 (values -> value COMMA values .)
+    STRING          reduce using rule 21 (values -> value COMMA values .)
+    BOOLEAN         reduce using rule 21 (values -> value COMMA values .)
+    $end            reduce using rule 21 (values -> value COMMA values .)
+    END             reduce using rule 21 (values -> value COMMA values .)
+    RPAREN          reduce using rule 21 (values -> value COMMA values .)
+    RBRACKET        reduce using rule 21 (values -> value COMMA values .)
+
+
+state 81
+
+    (47) impression -> PUTS LPAREN values RPAREN .
+
+    INSTANCE_VAR    reduce using rule 47 (impression -> PUTS LPAREN values RPAREN .)
+    GLOBAL_VAR      reduce using rule 47 (impression -> PUTS LPAREN values RPAREN .)
+    PRINT           reduce using rule 47 (impression -> PUTS LPAREN values RPAREN .)
+    PUTS            reduce using rule 47 (impression -> PUTS LPAREN values RPAREN .)
+    P               reduce using rule 47 (impression -> PUTS LPAREN values RPAREN .)
+    LPAREN          reduce using rule 47 (impression -> PUTS LPAREN values RPAREN .)
+    WHILE           reduce using rule 47 (impression -> PUTS LPAREN values RPAREN .)
+    CASE            reduce using rule 47 (impression -> PUTS LPAREN values RPAREN .)
+    DEF             reduce using rule 47 (impression -> PUTS LPAREN values RPAREN .)
+    LBRACKET        reduce using rule 47 (impression -> PUTS LPAREN values RPAREN .)
+    ID              reduce using rule 47 (impression -> PUTS LPAREN values RPAREN .)
+    PLUS            reduce using rule 47 (impression -> PUTS LPAREN values RPAREN .)
+    MINUS           reduce using rule 47 (impression -> PUTS LPAREN values RPAREN .)
+    TIMES           reduce using rule 47 (impression -> PUTS LPAREN values RPAREN .)
+    DIVIDE          reduce using rule 47 (impression -> PUTS LPAREN values RPAREN .)
+    MOD             reduce using rule 47 (impression -> PUTS LPAREN values RPAREN .)
+    NUMBER          reduce using rule 47 (impression -> PUTS LPAREN values RPAREN .)
+    STRING          reduce using rule 47 (impression -> PUTS LPAREN values RPAREN .)
+    BOOLEAN         reduce using rule 47 (impression -> PUTS LPAREN values RPAREN .)
+    $end            reduce using rule 47 (impression -> PUTS LPAREN values RPAREN .)
+    END             reduce using rule 47 (impression -> PUTS LPAREN values RPAREN .)
+
+
+state 82
+
+    (48) impression -> P LPAREN values RPAREN .
+
+    INSTANCE_VAR    reduce using rule 48 (impression -> P LPAREN values RPAREN .)
+    GLOBAL_VAR      reduce using rule 48 (impression -> P LPAREN values RPAREN .)
+    PRINT           reduce using rule 48 (impression -> P LPAREN values RPAREN .)
+    PUTS            reduce using rule 48 (impression -> P LPAREN values RPAREN .)
+    P               reduce using rule 48 (impression -> P LPAREN values RPAREN .)
+    LPAREN          reduce using rule 48 (impression -> P LPAREN values RPAREN .)
+    WHILE           reduce using rule 48 (impression -> P LPAREN values RPAREN .)
+    CASE            reduce using rule 48 (impression -> P LPAREN values RPAREN .)
+    DEF             reduce using rule 48 (impression -> P LPAREN values RPAREN .)
+    LBRACKET        reduce using rule 48 (impression -> P LPAREN values RPAREN .)
+    ID              reduce using rule 48 (impression -> P LPAREN values RPAREN .)
+    PLUS            reduce using rule 48 (impression -> P LPAREN values RPAREN .)
+    MINUS           reduce using rule 48 (impression -> P LPAREN values RPAREN .)
+    TIMES           reduce using rule 48 (impression -> P LPAREN values RPAREN .)
+    DIVIDE          reduce using rule 48 (impression -> P LPAREN values RPAREN .)
+    MOD             reduce using rule 48 (impression -> P LPAREN values RPAREN .)
+    NUMBER          reduce using rule 48 (impression -> P LPAREN values RPAREN .)
+    STRING          reduce using rule 48 (impression -> P LPAREN values RPAREN .)
+    BOOLEAN         reduce using rule 48 (impression -> P LPAREN values RPAREN .)
+    $end            reduce using rule 48 (impression -> P LPAREN values RPAREN .)
+    END             reduce using rule 48 (impression -> P LPAREN values RPAREN .)
+
+
+state 83
+
+    (50) while_loop -> WHILE condition DO statement_list . END
+
+    END             shift and go to state 86
+
+
+state 84
+
+    (37) when -> WHEN conditions statement_list .
+
+    END             reduce using rule 37 (when -> WHEN conditions statement_list .)
+
+
+state 85
+
+    (41) Sfunction -> DEF ID statement_list END .
+
+    INSTANCE_VAR    reduce using rule 41 (Sfunction -> DEF ID statement_list END .)
+    GLOBAL_VAR      reduce using rule 41 (Sfunction -> DEF ID statement_list END .)
+    PRINT           reduce using rule 41 (Sfunction -> DEF ID statement_list END .)
+    PUTS            reduce using rule 41 (Sfunction -> DEF ID statement_list END .)
+    P               reduce using rule 41 (Sfunction -> DEF ID statement_list END .)
+    LPAREN          reduce using rule 41 (Sfunction -> DEF ID statement_list END .)
+    WHILE           reduce using rule 41 (Sfunction -> DEF ID statement_list END .)
+    CASE            reduce using rule 41 (Sfunction -> DEF ID statement_list END .)
+    DEF             reduce using rule 41 (Sfunction -> DEF ID statement_list END .)
+    LBRACKET        reduce using rule 41 (Sfunction -> DEF ID statement_list END .)
+    ID              reduce using rule 41 (Sfunction -> DEF ID statement_list END .)
+    PLUS            reduce using rule 41 (Sfunction -> DEF ID statement_list END .)
+    MINUS           reduce using rule 41 (Sfunction -> DEF ID statement_list END .)
+    TIMES           reduce using rule 41 (Sfunction -> DEF ID statement_list END .)
+    DIVIDE          reduce using rule 41 (Sfunction -> DEF ID statement_list END .)
+    MOD             reduce using rule 41 (Sfunction -> DEF ID statement_list END .)
+    NUMBER          reduce using rule 41 (Sfunction -> DEF ID statement_list END .)
+    STRING          reduce using rule 41 (Sfunction -> DEF ID statement_list END .)
+    BOOLEAN         reduce using rule 41 (Sfunction -> DEF ID statement_list END .)
+    $end            reduce using rule 41 (Sfunction -> DEF ID statement_list END .)
+    END             reduce using rule 41 (Sfunction -> DEF ID statement_list END .)
+
+
+state 86
+
+    (50) while_loop -> WHILE condition DO statement_list END .
+
+    INSTANCE_VAR    reduce using rule 50 (while_loop -> WHILE condition DO statement_list END .)
+    GLOBAL_VAR      reduce using rule 50 (while_loop -> WHILE condition DO statement_list END .)
+    PRINT           reduce using rule 50 (while_loop -> WHILE condition DO statement_list END .)
+    PUTS            reduce using rule 50 (while_loop -> WHILE condition DO statement_list END .)
+    P               reduce using rule 50 (while_loop -> WHILE condition DO statement_list END .)
+    LPAREN          reduce using rule 50 (while_loop -> WHILE condition DO statement_list END .)
+    WHILE           reduce using rule 50 (while_loop -> WHILE condition DO statement_list END .)
+    CASE            reduce using rule 50 (while_loop -> WHILE condition DO statement_list END .)
+    DEF             reduce using rule 50 (while_loop -> WHILE condition DO statement_list END .)
+    LBRACKET        reduce using rule 50 (while_loop -> WHILE condition DO statement_list END .)
+    ID              reduce using rule 50 (while_loop -> WHILE condition DO statement_list END .)
+    PLUS            reduce using rule 50 (while_loop -> WHILE condition DO statement_list END .)
+    MINUS           reduce using rule 50 (while_loop -> WHILE condition DO statement_list END .)
+    TIMES           reduce using rule 50 (while_loop -> WHILE condition DO statement_list END .)
+    DIVIDE          reduce using rule 50 (while_loop -> WHILE condition DO statement_list END .)
+    MOD             reduce using rule 50 (while_loop -> WHILE condition DO statement_list END .)
+    NUMBER          reduce using rule 50 (while_loop -> WHILE condition DO statement_list END .)
+    STRING          reduce using rule 50 (while_loop -> WHILE condition DO statement_list END .)
+    BOOLEAN         reduce using rule 50 (while_loop -> WHILE condition DO statement_list END .)
+    $end            reduce using rule 50 (while_loop -> WHILE condition DO statement_list END .)
+    END             reduce using rule 50 (while_loop -> WHILE condition DO statement_list END .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for LPAREN in state 26 resolved as shift
+WARNING: shift/reduce conflict for END in state 56 resolved as shift

@@ -1,11 +1,31 @@
 # DIEGO CONTRERAS
-
 import ply.yacc as yacc
 from analizador_lexico import tokens
 
-
 def p_error(p):
     print(f"Syntax error in input! {p.value}', line {p.lineno}")
+
+# Definir producción inicial
+def p_program(p):
+    '''program : statement_list'''
+
+def p_statement_list(p):
+    '''statement_list : statement
+                      | statement statement_list'''
+
+def p_statement(p):
+    '''statement : assign
+                 | impression
+                 | tupla
+                 | conditions
+                 | while_loop
+                 | case
+                 | Sfunction
+                 | array
+                 | p_SfunctionINV
+                 | aritmeticExpresion
+                 | operator
+                 '''
 
 def p_assign(p):
     '''assign : INSTANCE_VAR ASSIGN value
@@ -17,13 +37,13 @@ def p_value(p):
             |  STRING
             |  BOOLEAN'''
 
-def p_code(p):
-    '''code : aritmeticExpresion
-              | impression
-              | tupla
-              | assign
-              | conditions
-              | while_loop'''
+# def p_code(p):
+#     '''code : aritmeticExpresion
+#               | impression
+#               | tupla
+#               | assign
+#               | conditions
+#               | while_loop'''
 
 
 def p_values(p):
@@ -67,7 +87,7 @@ def p_conditions(p):
                   | condition conector conditions'''
 
 def p_when(p):
-    'when : WHEN conditions code'
+    '''when : WHEN conditions statement_list'''
 
 def p_whens(p):
     '''whens : when
@@ -79,7 +99,7 @@ def p_case(p):
 #ADD HERE ABOUT SIMPLE FUNCION DECLARATION WITHOUT PARAMETERS.
 
 def p_Sfunction(p):
-    '''Sfunction : DEF ID code END'''
+    '''Sfunction : DEF ID statement_list END'''
 
 def p_SfunctionINV(p):
     '''p_SfunctionINV : ID
@@ -92,8 +112,8 @@ def p_SfunctionINV(p):
 def p_impression(p):
     '''impression : PRINT LPAREN values RPAREN
                   | PRINT values
-                  | PUTS values \n
-                  | PUTS LPAREN values RPAREN \n
+                  | PUTS values
+                  | PUTS LPAREN values RPAREN
                   | P LPAREN values RPAREN
                   | P values'''
 
@@ -101,10 +121,9 @@ def p_impression(p):
 def dataIn(p):
     '''dataIn: ASSIGN GETS '''
 
-
 # While loop Alexis Loor
 def p_while_loop(p):
-    '''while_loop : WHILE condition DO code END'''
+    '''while_loop : WHILE condition DO statement_list END'''
 
 # Definicion para 'tupla'
 def p_tupla(p):
@@ -121,4 +140,4 @@ while True:
        break
    if not s: continue
    result = parser.parse(s)
-   print(result)
+   print (result)
