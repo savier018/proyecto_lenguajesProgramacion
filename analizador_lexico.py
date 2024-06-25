@@ -8,7 +8,7 @@ tokens = [
     'ID', 'NUMBER', 'STRING',
     'PLUS', 'MINUS', 'TIMES', 'DIVIDE',
     'LPAREN', 'RPAREN', 'LBRACE', 'RBRACE',
-    'COMMA', 'DOT', 'SEMICOLON', 'MOD',
+    'COMMA', 'DOT', 'COLON', 'SEMICOLON', 'MOD',
     'EQUAL', 'NOTEQUAL', 'GREATERTHAN', 'LESSTHAN', 'GREATEROREQUAL', 'LESSOREQUAL',
     'ASSIGN', 'INSTANCE_VAR', 'GLOBAL_VAR', 'CONST', 'APOSTROPHE', 'DAPOSTROPHE', 'LBRACKET', 'RBRACKET', 'BOOLEAN'
 ]
@@ -59,6 +59,7 @@ t_LBRACKET = r'\['
 t_RBRACKET = r'\]'
 t_COMMA = r','
 t_DOT = r'\.'
+t_COLON = r':'
 t_SEMICOLON = r';'
 t_EQUAL = r'=='
 t_NOTEQUAL = r'!='
@@ -82,6 +83,7 @@ def t_ID(t):
 # Variable de instancia
 def t_INSTANCE_VAR(t):
     r'@[a-zA-Z_][a-zA-Z0-9_]*'
+    t.type = reserved_words.get(t.value, 'INSTANCE_VAR')
     return t
 
 
