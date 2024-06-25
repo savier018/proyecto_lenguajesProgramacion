@@ -1,0 +1,10 @@
+Syntax error in input! secondTerm', line 1
+Syntax error in input! +', line 1
+Syntax error in input! )', line 1
+Syntax error in input! else', line 1
+Syntax error in input! +', line 1
+Syntax error in input! secondTerm', line 1
+Syntax error in input! +', line 1
+Syntax error in input! )', line 1
+Syntax error in input! else', line 1
+Syntax error in input! +', line 1

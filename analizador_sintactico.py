@@ -1,6 +1,8 @@
 # DIEGO CONTRERAS
 import ply.yacc as yacc
 from analizador_lexico import tokens
+import os
+from datetime import datetime
 
 #PRODUCCIÓN INICIAL
 def p_codigo(p):
@@ -36,7 +38,16 @@ def p_values(p):
 
 #MENSAJE DE ERROR DEL ANALIZADOR SINTÁCTICO
 def p_error(p):
-    print(f"Syntax error in input! {p.value}', line {p.lineno}")
+    error_message = f"Syntax error in input! {p.value}', line {p.lineno}"
+    print(error_message)
+    now = datetime.now()
+    timestamp = now.strftime("%d%m%Y-%Hh%M")
+    
+    user = "alexisloor"  
+    log_filename = f"logs/sintactico-{user}-{timestamp}.txt"
+    
+    with open(log_filename, "a") as log_file:
+        log_file.write(error_message + "\n")
 
 
 #DEFINICIÓN DE VARIABLES
@@ -193,11 +204,88 @@ def p_tupla(p):
 # Diego´s part ends here.
 parser = yacc.yacc()
 
-while True:
-   try:
-       s = input('lp > ')
-   except EOFError:
-       break
-   if not s: continue
-   result = parser.parse(s)
-   print (result)
+
+
+def analizar_codigo(codigo, usuario_git):
+    try:
+        parser.parse(codigo)
+        print(parser.parse(codigo))
+        print("Análisis sintáctico exitoso. No se encontraron errores.")
+        fecha_hora = datetime.now().strftime('%d%m%Y-%Hh%M')
+        nombre_archivo_log = f"sintactico-{usuario_git}-{fecha_hora}.txt"
+        if not os.path.exists('logs'):
+            os.makedirs('logs')
+        ruta_archivo_log = os.path.join('logs', nombre_archivo_log)
+        with open(ruta_archivo_log, 'w') as archivo_log:
+            archivo_log.write("Análisis sintáctico exitoso. No se encontraron errores.")
+        print(f"Log guardado en: {ruta_archivo_log}")
+    except SyntaxError as e:
+        print(f"Error de sintaxis: {e}")
+        fecha_hora = datetime.now().strftime('%d%m%Y-%Hh%M')
+        nombre_archivo_log = f"sintactico-error-{usuario_git}-{fecha_hora}.txt"
+        if not os.path.exists('logs'):
+            os.makedirs('logs')
+        ruta_archivo_log = os.path.join('logs', nombre_archivo_log)
+        with open(ruta_archivo_log, 'w') as archivo_log:
+            archivo_log.write(f"Error de sintaxis:\n{str(e)}")
+        print(f"Log de error guardado en: {ruta_archivo_log}")
+    
+
+
+codigo_ruby_ItsDiegoTBG = '''
+def factorial(n)
+    if n == 0
+        return 1
+    else
+        return n * factorial(n-1)
+    end
+end
+'''
+
+codigo_ruby_ItsDiegoTBGValido = '''
+def factorial(n)
+    if n == 0
+    end
+end
+'''
+
+codigo_ruby_savier018 = '''
+def suma_numeros_naturales(n)
+   suma = 0
+   for i in 1..n
+        suma += i
+     end
+     return suma
+ end
+
+ puts "Ingresa un número:"
+ n = 10
+
+ resultado = suma_numeros_naturales(n) '''
+
+codigo_ruby_alexisloor = '''
+def getFibonacci(n)
+   firstTerm = 0
+   secondTerm = 1
+   nextTerm = 0
+   counter = 1
+   result = []
+   puts "The first #{n} terms of Fibonacci series are:-"
+   result.push(firstTerm)
+   while(counter <= n + 1)
+     if(counter <= 1)
+         nextTerm = counter
+     else
+         result.push(nextTerm)
+         nextTerm = firstTerm + secondTerm
+         firstTerm = secondTerm
+         secondTerm = nextTerm
+     end
+     counter += 1
+   end
+
+   puts result.to_s
+ end
+'''
+
+analizar_codigo(codigo_ruby_alexisloor, "ItsDiegoTBG")
