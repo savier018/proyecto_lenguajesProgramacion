@@ -25,36 +25,38 @@ def p_statement(p):
                  | p_SfunctionINV
                  | aritmeticExpresion
                  | operator
+                 | dataIn
                  '''
 
 def p_assign(p):
     '''assign : INSTANCE_VAR ASSIGN value
               | GLOBAL_VAR ASSIGN value
+              | VARIABLE ASSIGN value
+              | VARIABLE ASSIGN data_structure
+              | INSTANCE_VAR ASSIGN data_structure
+              | GLOBAL_VAR ASSIGN data_structure
               '''
+
+def p_VARIABLE(p):
+    '''VARIABLE : ID'''
 
 def p_value(p):
     '''value : NUMBER
             |  STRING
-            |  BOOLEAN'''
-
-# def p_code(p):
-#     '''code : aritmeticExpresion
-#               | impression
-#               | tupla
-#               | assign
-#               | conditions
-#               | while_loop'''
-
+            |  BOOLEAN
+            | aritmeticExpresion
+            | conditions
+            '''
 
 def p_values(p):
     '''values : value
               | value COMMA values'''
 
 # Try and add here about PEDMAS arithmetic equation
-
 def p_aritmeticExpresion(p):
-    '''aritmeticExpresion : value operator value '''
-
+    '''aritmeticExpresion : value operator value
+                          | LPAREN aritmeticExpresion RPAREN
+                          '''
 
 def p_operator(p):
     '''operator : PLUS
@@ -69,6 +71,10 @@ def p_emptyarray(p):
 def p_array(p):
     '''array : LBRACKET values RBRACKET'''
 
+def p_data_structure(p):
+    '''data_structure : array
+                      | tupla'''
+
 #ADD HERE ABOUT CASE
 
 def p_conector(p):
@@ -77,7 +83,8 @@ def p_conector(p):
 
 def p_operComp(p):
     '''operComp : LESSTHAN
-                | GREATERTHAN'''
+                | GREATERTHAN
+                '''
 
 def p_condition(p):
     '''condition : value operComp value'''
@@ -115,11 +122,16 @@ def p_impression(p):
                   | PUTS values
                   | PUTS LPAREN values RPAREN
                   | P LPAREN values RPAREN
-                  | P values'''
+                  | P values
+                  | PRINT
+                  | PUTS
+                  '''
 
 #solicitud de datos
-def dataIn(p):
-    '''dataIn: ASSIGN GETS '''
+def p_dataIn(p):
+    '''dataIn : VARIABLE ASSIGN GETS
+              | INSTANCE_VAR ASSIGN GETS
+              | GLOBAL_VAR ASSIGN GETS '''
 
 # While loop Alexis Loor
 def p_while_loop(p):
@@ -129,9 +141,11 @@ def p_while_loop(p):
 def p_tupla(p):
     '''tupla : LPAREN values RPAREN'''
 
+def p_emptytupla(p):
+    '''tupla : LPAREN RPAREN'''
+
 # Diego´s part ends here.
 parser = yacc.yacc()
-
 
 while True:
    try:
