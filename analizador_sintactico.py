@@ -4,7 +4,10 @@ from analizador_lexico import tokens
 import os
 from datetime import datetime
 
+
 # PRODUCCIÓN INICIAL
+
+variables = {}
 
 def p_codigo(p):
     '''codigo : statement
@@ -34,6 +37,10 @@ def p_value(p):
              | INSTANCE_VAR
              | GLOBAL_VAR
              | ID'''
+    if isinstance(p[1],str) and p[1] in variables:
+        p[0] = variables[p[1]]
+    else:
+        p[0] = p[1]
 
 def p_values(p):
     '''values : value
@@ -60,11 +67,28 @@ def p_assign(p):
               | INSTANCE_VAR ASSIGN data_structure
               | GLOBAL_VAR ASSIGN data_structure
               | ID ASSIGN data_structure'''
+    variables[p[1]] = p[3]
 
 # EXPRESIONES ARITMÉTICAS CON UNO O MÁS OPERADORES
 def p_aritmeticExpresion(p):
     '''aritmeticExpresion : value operator value
                           | aritmeticExpresion operator value'''
+    if not isinstance(p[1],str) or p[1] in variables:
+        if isinstance(p[1], int) or isinstance(p[1], float) or isinstance(p[1], p_aritmeticExpresion):
+            pass
+        else:
+            print(f"Error semantico, {p[1]} no es un NUMBER o una Expresion")
+    else: 
+        print(f"Error Semantico: la variable {p[1]} no ha sido inicializada") 
+        return
+    if not isinstance(p[3],str) or p[3] in variables:
+        if isinstance(p[3], int) or isinstance(p[3], float) or isinstance(p[1], p_aritmeticExpresion):
+            pass
+        else:
+            print(f"Error semantico, {p[3]} no es un NUMBER o una Expresion")
+    else: 
+        print(f"Error Semantico: la variable {p[3]} no ha sido inicializada") 
+        return
 
 def p_operator(p):
     '''operator : PLUS
