@@ -85,7 +85,7 @@ def p_assign(p):
               '''
     variables[p[1]] = {'value': p[3], 'type': get_type(p[3])}
 
-# EXPRESIONES ARITMÉTICAS CON UNO O MÁS OPERADORES
+# EXPRESIONES ARITMÉTICAS CON UNO O MÁS OPERADORES SEMANTICO DIEGO CONTRERAS
 def p_aritmeticExpresion(p):
     '''aritmeticExpresion : value operator value
                           | aritmeticExpresion operator value'''
@@ -141,7 +141,7 @@ def p_hash_contents(p):
 def p_hash_pair(p):
     '''hash_pair : value COLON value'''
 
-# CONDICIONES CON UNO O MÁS CONECTORES
+# CONDICIONES CON UNO O MÁS CONECTORES NOTA SI SE PUEDEN COMPARAR DIFERENTES TIPOS DE DATOS.
 def p_conditions(p):
     '''conditions : condition
                   | condition conector conditions'''
@@ -228,25 +228,33 @@ def p_params(p):
         p[0] = [p[1]] + p[3]
     
 
-# IMPRESIÓN Y SOLICITUD DE DATOS
+# IMPRESIÓN Y SOLICITUD DE DATOS SEMANTICO DIEGO CONTRERAS. SOLO ES VERIFICAR SI VALUE ES STRING, ES UNA INSTANCIA
+
 def p_impression(p):
-    '''impression : PRINT LPAREN values RPAREN
-                  | PRINT values
-                  | PUTS values
-                  | PUTS LPAREN values RPAREN
-                  | P LPAREN values RPAREN
-                  | P values
-                  | PRINT
-                  | PUTS'''
+    '''impression : PRINT LPAREN value RPAREN
+                  | PRINT value
+                  | PUTS value
+                  | PUTS LPAREN value RPAREN
+                  | P LPAREN value RPAREN
+                  | P value'''
+    if isinstance(p[2],str) or p[2] in variables or p[2] in funciones or isinstance(p[3],str) or p[3] in variables or p[3] in funciones:
+            pass
+    else:
+        print(f"Error semantico, Valor no es string o esta inicializado")
+
 
 def p_dataIn(p):
     '''dataIn : ID ASSIGN GETS
               | INSTANCE_VAR ASSIGN GETS
               | GLOBAL_VAR ASSIGN GETS'''
+    variables[p[1]] = {'value': p[1], 'type': get_type(p[1])}
+    
 
 # BUCLE WHILE
 def p_while_loop(p):
     '''while_loop : WHILE LPAREN conditions RPAREN codigo END'''
+
+
 
 # DEFINICIÓN DE TUPLA
 def p_tupla(p):
