@@ -8,6 +8,21 @@ from datetime import datetime
 # PRODUCCIÓN INICIAL
 
 variables = {}
+funciones = {}
+
+def get_type(value):
+    if isinstance(value, int):
+        return 'Integer'
+    elif isinstance(value, float):
+        return 'Float'
+    elif isinstance(value, str):
+        return 'String'
+    elif isinstance(value, list):
+        return 'Array'
+    elif isinstance(value, dict):
+        return 'Hash'
+    else:
+        return 'Unknown'
 
 def p_codigo(p):
     '''codigo : statement
@@ -66,8 +81,9 @@ def p_assign(p):
               | ID ASSIGN value
               | INSTANCE_VAR ASSIGN data_structure
               | GLOBAL_VAR ASSIGN data_structure
-              | ID ASSIGN data_structure'''
-    variables[p[1]] = p[3]
+              | ID ASSIGN data_structure
+              '''
+    variables[p[1]] = {'value': p[3], 'type': get_type(p[3])}
 
 # EXPRESIONES ARITMÉTICAS CON UNO O MÁS OPERADORES
 def p_aritmeticExpresion(p):
@@ -148,20 +164,21 @@ def p_operComp(p):
 
 # CONDICIONALES IF, ELSIF, ELSE
 def p_control_structures(p):
-    '''control_structures : if_block END
+    '''control_structures : if_block
                           | if_block elsif_blocks
                           | if_block elsif_blocks else_block
                           | if_block else_block'''
 
 def p_if_block(p):
-    '''if_block : IF LPAREN condition RPAREN codigo'''
+    '''if_block : IF LPAREN conditions RPAREN codigo
+                | IF LPAREN conditions RPAREN codigo END'''
 
 def p_elsif_blocks(p):
     '''elsif_blocks : elsif_block
                     | elsif_blocks elsif_block'''
 
 def p_elsif_block(p):
-    '''elsif_block : ELSIF condition codigo'''
+    '''elsif_block : ELSIF LPAREN conditions RPAREN codigo'''
 
 def p_else_block(p):
     '''else_block : ELSE codigo END'''
@@ -179,18 +196,37 @@ def p_case(p):
 
 # DECLARACIÓN SIMPLE DE FUNCIÓN SIN PARÁMETROS
 def p_Sfunction(p):
-    '''Sfunction : DEF ID codigo END'''
+    '''Sfunction : DEF ID LPAREN RPAREN codigo END'''
+    funciones[p[2]] = {'params': [], 'code': p[5]}
 
 def p_SfunctionINV(p):
     '''p_SfunctionINV : ID
-                      | ID LPAREN RPAREN'''
+                      | ID LPAREN params RPAREN'''
+    if len(p) == 2:
+        funciones[p[1]] = {'params': []} 
+    else:
+        funciones[p[1]] = {'params': p[3]} 
 
 # FUNCIONES DE 1 Y 2 PARÁMETROS
 def p_function_one_parameter(p):
-    '''p_function_one_parameter : DEF ID LPAREN ID RPAREN codigo END'''
+    '''p_function_one_parameter : DEF ID LPAREN param RPAREN codigo END'''
+    funciones[p[2]] = {'param': [p[4]], 'code': p[6]}
 
 def p_function_two_parameter(p):
-    '''p_function_two_parameter : DEF ID LPAREN ID COMMA ID RPAREN codigo END'''
+    '''p_function_two_parameter : DEF ID LPAREN params RPAREN codigo END'''
+    funciones[p[2]] = {'params': p[4], 'code': p[7]}
+
+def p_param(p):
+    '''param : value'''
+    p[0] = p[1]
+    
+def p_params(p):
+    '''params : value COMMA value'''
+    if len(p) == 2:
+        p[0] = [p[1]]
+    else:
+        p[0] = [p[1]] + p[3]
+    
 
 # IMPRESIÓN Y SOLICITUD DE DATOS
 def p_impression(p):
@@ -293,6 +329,7 @@ def getFibonacci(n)
         firstTerm = secondTerm
         secondTerm = nextTerm
     end
+    counter += 1
   end
 end
 '''
