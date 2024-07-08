@@ -40,6 +40,7 @@ def p_statement(p):
               | p_SfunctionINV
               | p_function_one_parameter
               | p_function_two_parameter
+              | function_call
               | aritmeticExpresion
               | operator
               | dataIn
@@ -227,6 +228,13 @@ def p_params(p):
     else:
         p[0] = [p[1]] + p[3]
     
+def p_function_call(p):
+    '''function_call : ID LPAREN RPAREN
+                     | ID LPAREN params RPAREN
+                     | ID LPAREN param RPAREN'''
+    if p[1] not in funciones:
+        print(f"Error semántico: la función {p[1]} no ha sido declarada")
+
 
 # IMPRESIÓN Y SOLICITUD DE DATOS SEMANTICO DIEGO CONTRERAS. SOLO ES VERIFICAR SI VALUE ES STRING, ES UNA INSTANCIA
 
@@ -322,6 +330,7 @@ def suma_numeros_naturales(n)
  resultado = suma_numeros_naturales(n) '''
 
 codigo_ruby_alexisloor = '''
+factorial(5)
 def getFibonacci(n)
   firstTerm = 0
   secondTerm = 1
@@ -343,3 +352,4 @@ end
 '''
 
 analizar_codigo(codigo_ruby_alexisloor, "ItsDiegoTBG")
+print(funciones)
