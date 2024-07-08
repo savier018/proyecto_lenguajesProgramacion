@@ -96,17 +96,18 @@ def p_aritmeticExpresion(p):
         if isinstance(p[1], int) or isinstance(p[1], float) or isinstance(p[1], p_aritmeticExpresion):
             pass
         else:
-            print(f"Error semantico, {p[1]} no es un NUMBER o una Expresion")
+            genLogsSemantico(f"{p[1]} no es un NUMBER o una Expresion")
     else: 
         print(f"Error Semantico: la variable {p[1]} no ha sido inicializada") 
+        genLogsSemantico(f"la variable {p[1]} no ha sido inicializada")
         return
     if not isinstance(p[3],str) or p[3] in variables:
         if isinstance(p[3], int) or isinstance(p[3], float) or isinstance(p[1], p_aritmeticExpresion):
             pass
         else:
-            print(f"Error semantico, {p[3]} no es un NUMBER o una Expresion")
+            genLogsSemantico(f"{p[3]} no es un NUMBER o una Expresion")
     else: 
-        print(f"Error Semantico: la variable {p[3]} no ha sido inicializada") 
+        genLogsSemantico(f"la variable {p[3]} no ha sido inicializada")
         return
 
 def p_operator(p):
@@ -176,7 +177,7 @@ def p_if_block(p):
     '''if_block : IF LPAREN conditions RPAREN codigo
                 | IF LPAREN conditions RPAREN codigo END'''
     if (not isinstance(p[3], bool)):
-        print("Error semántico: la expresión no es booleana")
+        genLogsSemantico(f"la expresión no es booleana")
 
 def p_elsif_blocks(p):
     '''elsif_blocks : elsif_block
@@ -185,7 +186,7 @@ def p_elsif_blocks(p):
 def p_elsif_block(p):
     '''elsif_block : ELSIF LPAREN conditions RPAREN codigo'''
     if (not isinstance(p[3], bool)):
-        print("Error semántico: la expresión no es booleana")
+         genLogsSemantico(f"la expresión no es booleana")
 
 def p_else_block(p):
     '''else_block : ELSE codigo END'''
@@ -194,7 +195,8 @@ def p_else_block(p):
 def p_when(p):
     '''when : WHEN conditions codigo'''
     if (not isinstance(p[2], bool)):
-        print("Error semántico: la expresión no es booleana")
+        genLogsSemantico(f"la expresión no es booleana")
+ 
 
 def p_whens(p):
     '''whens : when
@@ -242,7 +244,7 @@ def p_function_call(p):
                      | ID LPAREN param RPAREN'''
     # detecta llamadas a metodos que no han sido declarados
     if p[1] not in funciones:
-        print(f"Error semántico: la función {p[1]} no ha sido declarada")
+        genLogsSemantico(f"la función {p[1]} no ha sido declarada")
 
 
 # IMPRESIÓN Y SOLICITUD DE DATOS SEMANTICO DIEGO CONTRERAS. SOLO ES VERIFICAR SI VALUE ES STRING, ES UNA INSTANCIA
@@ -257,7 +259,7 @@ def p_impression(p):
     if isinstance(p[2],str) or p[2] in variables or p[2] in funciones or isinstance(p[3],str) or p[3] in variables or p[3] in funciones:
             pass
     else:
-        print(f"Error semantico, Valor no es string o esta inicializado")
+        genLogsSemantico("Valor no es string o esta inicializado")
 
 
 def p_dataIn(p):
@@ -280,6 +282,18 @@ def p_tupla(p):
 # CONSTRUCCIÓN DEL PARSER
 parser = yacc.yacc()
 
+
+def genLogsSemantico(error):
+    error_message = f"Semantic Error in input! {error}"
+    print(error_message)
+    now = datetime.now()
+    timestamp = now.strftime("%d%m%Y-%Hh%M")
+    
+    user = "ItsDiegoTBG"  
+    log_filename = f"logs/semantico-{user}-{timestamp}.txt"
+    
+    with open(log_filename, "a") as log_file:
+        log_file.write(error_message + "\n")
 
 
 def analizar_codigo(codigo, usuario_git):
