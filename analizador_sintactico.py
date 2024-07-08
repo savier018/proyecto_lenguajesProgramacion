@@ -21,6 +21,8 @@ def get_type(value):
         return 'Array'
     elif isinstance(value, dict):
         return 'Hash'
+    elif isinstance(value, bool):
+        return 'Boolean'
     else:
         return 'Unknown'
 
@@ -173,6 +175,8 @@ def p_control_structures(p):
 def p_if_block(p):
     '''if_block : IF LPAREN conditions RPAREN codigo
                 | IF LPAREN conditions RPAREN codigo END'''
+    if (not isinstance(p[3], bool)):
+        print("Error semántico: la expresión no es booleana")
 
 def p_elsif_blocks(p):
     '''elsif_blocks : elsif_block
@@ -180,6 +184,8 @@ def p_elsif_blocks(p):
 
 def p_elsif_block(p):
     '''elsif_block : ELSIF LPAREN conditions RPAREN codigo'''
+    if (not isinstance(p[3], bool)):
+        print("Error semántico: la expresión no es booleana")
 
 def p_else_block(p):
     '''else_block : ELSE codigo END'''
@@ -187,6 +193,8 @@ def p_else_block(p):
 # CONDICIONAL CASE-WHEN
 def p_when(p):
     '''when : WHEN conditions codigo'''
+    if (not isinstance(p[2], bool)):
+        print("Error semántico: la expresión no es booleana")
 
 def p_whens(p):
     '''whens : when
@@ -232,6 +240,7 @@ def p_function_call(p):
     '''function_call : ID LPAREN RPAREN
                      | ID LPAREN params RPAREN
                      | ID LPAREN param RPAREN'''
+    # detecta llamadas a metodos que no han sido declarados
     if p[1] not in funciones:
         print(f"Error semántico: la función {p[1]} no ha sido declarada")
 
@@ -331,7 +340,7 @@ def suma_numeros_naturales(n)
 
 codigo_ruby_alexisloor = '''
 factorial(5)
-def getFibonacci(n)
+def getFibonacci()
   firstTerm = 0
   secondTerm = 1
   nextTerm = 0
@@ -352,4 +361,3 @@ end
 '''
 
 analizar_codigo(codigo_ruby_alexisloor, "ItsDiegoTBG")
-print(funciones)
