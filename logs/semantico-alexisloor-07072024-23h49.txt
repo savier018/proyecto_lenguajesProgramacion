@@ -1,0 +1,3 @@
+Semantic Error in input! la función factorial no ha sido declarada
+Semantic Error in input! la variable n no ha sido inicializada
+Semantic Error in input! la expresión no es booleana

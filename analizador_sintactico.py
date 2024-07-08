@@ -289,35 +289,16 @@ def genLogsSemantico(error):
     now = datetime.now()
     timestamp = now.strftime("%d%m%Y-%Hh%M")
     
-    user = "ItsDiegoTBG"  
+    user = "alexisloor"  
     log_filename = f"logs/semantico-{user}-{timestamp}.txt"
     
     with open(log_filename, "a") as log_file:
         log_file.write(error_message + "\n")
 
 
-def analizar_codigo(codigo, usuario_git):
-    try:
-        parser.parse(codigo)
-        print("Análisis sintáctico exitoso. No se encontraron errores.")
-        fecha_hora = datetime.now().strftime('%d%m%Y-%Hh%M')
-        nombre_archivo_log = f"sintactico-{usuario_git}-{fecha_hora}.txt"
-        if not os.path.exists('logs'):
-            os.makedirs('logs')
-        ruta_archivo_log = os.path.join('logs', nombre_archivo_log)
-        with open(ruta_archivo_log, 'w') as archivo_log:
-            archivo_log.write("Análisis sintáctico exitoso. No se encontraron errores.")
-        print(f"Log guardado en: {ruta_archivo_log}")
-    except Exception as e:
-        print(f"Error de sintaxis: {e}")
-        fecha_hora = datetime.now().strftime('%d%m%Y-%Hh%M')
-        nombre_archivo_log = f"sintactico-error-{usuario_git}-{fecha_hora}.txt"
-        if not os.path.exists('logs'):
-            os.makedirs('logs')
-        ruta_archivo_log = os.path.join('logs', nombre_archivo_log)
-        with open(ruta_archivo_log, 'w') as archivo_log:
-            archivo_log.write(f"Error de sintaxis:\n{str(e)}")
-        print(f"Log de error guardado en: {ruta_archivo_log}")
+def analizar_codigo(codigo):
+    parser.parse(codigo)
+        
     
 
 
@@ -374,4 +355,4 @@ def getFibonacci()
 end
 '''
 
-analizar_codigo(codigo_ruby_alexisloor, "ItsDiegoTBG")
+analizar_codigo(codigo_ruby_alexisloor)

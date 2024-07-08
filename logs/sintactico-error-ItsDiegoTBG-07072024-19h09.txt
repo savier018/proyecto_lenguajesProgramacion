@@ -1,2 +1,0 @@
-Error de sintaxis:
-can only concatenate list (not "str") to list
