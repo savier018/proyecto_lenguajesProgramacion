@@ -2,9 +2,11 @@ import tkinter as tk
 from analizador_lexico import analizar_codigoL
 from analizador_lexico import checkErrorsL
 from analizador_lexico import getErrorsL
+from analizador_lexico import deleteErrorsL
 from analizador_sintactico import analizar_codigoS
 from analizador_sintactico import checkErrorsSS
 from analizador_sintactico import getErrorsSS
+from analizador_sintactico import deleteErrorsSS
 
 erroresText=""
 errors=False
@@ -24,6 +26,7 @@ def analizar_codigo(entrada_usuario):
 
 
 def obtener_respuesta():
+    global erroresText
     entrada_usuario = entrada_texto.get("1.0", "end-1c")
     analizar_codigo(entrada_usuario)
     respuestaText= ""
@@ -35,6 +38,9 @@ def obtener_respuesta():
     texto_respuesta.insert("1.0",respuestaText)
     texto_errores.delete("1.0", "end")
     texto_errores.insert("1.0",erroresText)  
+    erroresText = ""
+    deleteErrorsL()
+    deleteErrorsSS()
 
 
 ventana = tk.Tk()

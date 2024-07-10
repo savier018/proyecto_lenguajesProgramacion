@@ -20,6 +20,9 @@ def checkErrorsSS():
 def getErrorsSS():
     return error_messages
 
+def deleteErrorsSS():
+    error_messages.clear()
+
 def get_type(value):
     if isinstance(value, int):
         return 'Integer'

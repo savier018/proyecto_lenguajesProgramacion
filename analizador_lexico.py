@@ -13,6 +13,9 @@ def checkErrorsL():
 def getErrorsL():
     return error_messages
 
+def deleteErrorsL():
+    error_messages.clear()
+
 tokens = [
     'ID', 'NUMBER', 'STRING',
     'PLUS', 'MINUS', 'TIMES', 'DIVIDE',
