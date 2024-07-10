@@ -9,6 +9,16 @@ from datetime import datetime
 
 variables = {}
 funciones = {}
+error_messages = []
+
+def checkErrorsSS():
+    if len(error_messages)==0:
+        return False
+    else:
+        return True
+    
+def getErrorsSS():
+    return error_messages
 
 def get_type(value):
     if isinstance(value, int):
@@ -67,15 +77,8 @@ def p_values(p):
 # MENSAJE DE ERROR DEL ANALIZADOR SINTÁCTICO
 def p_error(p):
     error_message = f"Syntax error in input! {p.value}', line {p.lineno}"
+    error_messages.append(error_message)
     print(error_message)
-    now = datetime.now()
-    timestamp = now.strftime("%d%m%Y-%Hh%M")
-    
-    user = "alexisloor"  
-    log_filename = f"logs/sintactico-{user}-{timestamp}.txt"
-    
-    with open(log_filename, "a") as log_file:
-        log_file.write(error_message + "\n")
 
 # DEFINICIÓN DE VARIABLES
 def p_assign(p):
@@ -285,20 +288,12 @@ parser = yacc.yacc()
 
 def genLogsSemantico(error):
     error_message = f"Semantic Error in input! {error}"
+    error_messages.append(error_message)
     print(error_message)
-    now = datetime.now()
-    timestamp = now.strftime("%d%m%Y-%Hh%M")
-    
-    user = "alexisloor"  
-    log_filename = f"logs/semantico-{user}-{timestamp}.txt"
-    
-    with open(log_filename, "a") as log_file:
-        log_file.write(error_message + "\n")
 
-
-def analizar_codigo(codigo):
+def analizar_codigoS(codigo):
     parser.parse(codigo)
-        
+    
     
 
 
@@ -355,4 +350,4 @@ def getFibonacci()
 end
 '''
 
-analizar_codigo(codigo_ruby_alexisloor)
+

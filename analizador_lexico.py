@@ -2,6 +2,17 @@ import ply.lex as lex
 from datetime import datetime
 import os
 
+error_messages = []
+
+def checkErrorsL():
+    if len(error_messages)==0:
+        return False
+    else:
+        return True
+    
+def getErrorsL():
+    return error_messages
+
 tokens = [
     'ID', 'NUMBER', 'STRING',
     'PLUS', 'MINUS', 'TIMES', 'DIVIDE',
@@ -103,6 +114,7 @@ t_ignore = ' \t\f\n\r'
 
 def t_error(t):
     print(f"Carácter ilegal '%s'" % t.value[0])
+    error_messages.append(f"Carácter ilegal '%s'" % t.value[0])
     t.lexer.skip(1)
 
 # Construcción del lexer
@@ -110,7 +122,7 @@ lexer = lex.lex()
 
 
 # Analizar el código y generar logs
-def analizar_codigo(codigo, usuario_git):
+def analizar_codigoL(codigo):
     lexer.input(codigo)
     tokens_reconocidos = []
 
@@ -120,21 +132,6 @@ def analizar_codigo(codigo, usuario_git):
             break
         print(tok)
         tokens_reconocidos.append(tok)
-
-    fecha_hora = datetime.now().strftime('%d%m%Y-%Hh%M')
-
-    nombre_archivo_log = f"lexico-{usuario_git}-{fecha_hora}.txt"
-
-    if not os.path.exists('logs'):
-        os.makedirs('logs')
-
-    ruta_archivo_log = os.path.join('logs', nombre_archivo_log)
-
-    with open(ruta_archivo_log, 'w') as archivo_log:
-        for token in tokens_reconocidos:
-            archivo_log.write(f"{token}\n")
-
-    print(f"Log guardado en: {ruta_archivo_log}")
 
 
 # # Testing de algoritmos
