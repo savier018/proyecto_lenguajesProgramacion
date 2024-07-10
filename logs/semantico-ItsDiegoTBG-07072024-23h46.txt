@@ -1,2 +1,0 @@
-Semantic Error in input! la variable n no ha sido inicializada
-Semantic Error in input! la variable n no ha sido inicializada

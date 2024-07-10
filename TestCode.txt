@@ -1,0 +1,97 @@
+CODIGO VALIDO 
+
+codigo_ruby_ItsDiegoTBG =
+def factorial(n)
+    if n == 0
+        return 1
+    else
+        return n * factorial(n-1)
+    end
+end
+
+
+codigo_ruby_ItsDiegoTBGValido =
+def factorial(n)
+    if n == 0
+    end
+end
+
+
+codigo_ruby_savier018 =
+def suma_numeros_naturales(n)
+   suma = 0
+   for i in 1..n
+        suma += i
+     end
+     return suma
+ end
+
+ puts "Ingresa un número:"
+ n = 10
+
+ resultado = suma_numeros_naturales(n)
+
+codigo_ruby_alexisloor = 
+factorial(5)
+def getFibonacci()
+  firstTerm = 0
+  secondTerm = 1
+  nextTerm = 0
+  counter = 1
+  result = []
+  puts "The first #{n} terms of Fibonacci series are:-"
+  while(counter <= n + 1)
+    if(counter <= 1)
+        nextTerm = counter
+    else
+        nextTerm = firstTerm + secondTerm
+        firstTerm = secondTerm
+        secondTerm = nextTerm
+    end
+    counter += 1
+  end
+end
+
+
+CODIGO INVALIDO.
+codigo_ruby_ItsDiegoTBG = 
+def invalidcode1
+    if n == 0
+        return 1
+    else
+        return n
+    end
+end
+
+codigo_ruby_savier018 =
+def suma_numeros_naturales(n)
+   suma = "0"
+   for i in 1..n
+        suma += i
+     end
+     return suma
+ end
+
+ puts "Ingresa un número:"
+ n = 10
+
+ resultado = suma_numeros_naturales(n
+
+codigo_ruby_alexisloor = 
+def getFibonacci()
+  firstTerm = 0
+  counter = 1
+  result = []
+  puts "The first #{n} terms of Fibonacci series are:-"
+  while(counter <= n + 1)
+    if(counter <= 1)
+        nextTerm = counter
+    else
+        nextTerm = firstTerm + secondTerm
+        firstTerm = secondTerm
+        secondTerm = nextTerm
+    end
+    counter += 1
+  end
+end
+
