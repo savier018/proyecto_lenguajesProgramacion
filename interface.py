@@ -3,10 +3,10 @@ from analizador_lexico import analizar_codigoL
 from analizador_lexico import checkErrorsL
 from analizador_lexico import getErrorsL
 from analizador_lexico import deleteErrorsL
-from analizador_sintactico import analizar_codigoS
-from analizador_sintactico import checkErrorsSS
-from analizador_sintactico import getErrorsSS
-from analizador_sintactico import deleteErrorsSS
+from analizador_sintactico1 import analizar_codigoS
+from analizador_sintactico1 import checkErrorsSS
+from analizador_sintactico1 import getErrorsSS
+from analizador_sintactico1 import deleteErrorsSS
 
 erroresText=""
 errors=False

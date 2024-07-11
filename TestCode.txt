@@ -21,7 +21,7 @@ codigo_ruby_savier018 =
 def suma_numeros_naturales(n)
    suma = 0
    for i in 1..n
-        suma += i
+        suma = suma + i
      end
      return suma
  end
@@ -32,25 +32,24 @@ def suma_numeros_naturales(n)
  resultado = suma_numeros_naturales(n)
 
 codigo_ruby_alexisloor = 
-factorial(5)
-def getFibonacci()
-  firstTerm = 0
-  secondTerm = 1
-  nextTerm = 0
-  counter = 1
-  result = []
-  puts "The first #{n} terms of Fibonacci series are:-"
-  while(counter <= n + 1)
-    if(counter <= 1)
-        nextTerm = counter
-    else
-        nextTerm = firstTerm + secondTerm
-        firstTerm = secondTerm
-        secondTerm = nextTerm
+    def getFibonacci()
+        firstTerm = 0
+        secondTerm = 1
+        nextTerm = 0
+        counter = 1
+        result = []
+        puts "The first #{n} terms of Fibonacci series are:-"
+        while(counter <= n + 1)
+            if(counter <= 1)
+                nextTerm = counter
+            else
+                nextTerm = firstTerm + secondTerm
+                firstTerm = secondTerm
+                secondTerm = nextTerm
+            end
+            counter = counter + 1
+        end
     end
-    counter += 1
-  end
-end
 
 
 CODIGO INVALIDO.

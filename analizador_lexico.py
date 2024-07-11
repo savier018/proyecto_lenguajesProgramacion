@@ -18,9 +18,9 @@ def deleteErrorsL():
 
 tokens = [
     'ID', 'NUMBER', 'STRING',
-    'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'INCREMENT', 'DECREMENT',
+    'PLUS', 'MINUS', 'TIMES', 'DIVIDE',
     'LPAREN', 'RPAREN', 'LBRACE', 'RBRACE',
-    'COMMA', 'DOT', 'COLON', 'SEMICOLON', 'MOD',
+    'COMMA', 'DOT','DOTS', 'COLON', 'SEMICOLON', 'MOD',
     'EQUAL', 'NOTEQUAL', 'GREATERTHAN', 'LESSTHAN', 'GREATEROREQUAL', 'LESSOREQUAL',
     'ASSIGN', 'INSTANCE_VAR', 'GLOBAL_VAR', 'CONST', 'APOSTROPHE', 'DAPOSTROPHE', 'LBRACKET', 'RBRACKET'
 ]
@@ -50,7 +50,8 @@ reserved_words = {
     'case': 'CASE',
     'when': 'WHEN',
     'p': 'P',
-    'gets': 'GETS'
+    'gets':'GETS',
+    'set':'SET'
 }
 
 tokens = tokens + list(reserved_words.values())
@@ -60,8 +61,6 @@ t_MINUS = r'-'
 t_TIMES = r'\*'
 t_DIVIDE = r'/'
 t_MOD = r'\%'
-t_INCREMENT = r'\+='
-t_DECREMENT = r'\-='
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
 t_LBRACE = r'\{'
@@ -70,6 +69,7 @@ t_LBRACKET = r'\['
 t_RBRACKET = r'\]'
 t_COMMA = r','
 t_DOT = r'\.'
+t_DOTS = r'\.\.'
 t_COLON = r':'
 t_SEMICOLON = r';'
 t_EQUAL = r'=='
