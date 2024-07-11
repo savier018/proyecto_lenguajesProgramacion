@@ -18,7 +18,7 @@ def deleteErrorsL():
 
 tokens = [
     'ID', 'NUMBER', 'STRING',
-    'PLUS', 'MINUS', 'TIMES', 'DIVIDE',
+    'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'INCREMENT', 'DECREMENT',
     'LPAREN', 'RPAREN', 'LBRACE', 'RBRACE',
     'COMMA', 'DOT', 'COLON', 'SEMICOLON', 'MOD',
     'EQUAL', 'NOTEQUAL', 'GREATERTHAN', 'LESSTHAN', 'GREATEROREQUAL', 'LESSOREQUAL',
@@ -60,6 +60,8 @@ t_MINUS = r'-'
 t_TIMES = r'\*'
 t_DIVIDE = r'/'
 t_MOD = r'\%'
+t_INCREMENT = r'\+='
+t_DECREMENT = r'\-='
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
 t_LBRACE = r'\{'

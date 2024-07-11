@@ -122,6 +122,8 @@ def p_operator(p):
                 | TIMES
                 | DIVIDE
                 | MOD
+                | INCREMENT
+                | DECREMENT
                 | LPAREN aritmeticExpresion RPAREN'''
 
 # ESTRUCTURAS DE DATOS
@@ -182,8 +184,7 @@ def p_control_structures(p):
 def p_if_block(p):
     '''if_block : IF LPAREN conditions RPAREN codigo
                 | IF LPAREN conditions RPAREN codigo END'''
-    if (not isinstance(p[3], bool)):
-        genLogsSemantico(f"la expresión no es booleana")
+
 
 def p_elsif_blocks(p):
     '''elsif_blocks : elsif_block
@@ -191,8 +192,6 @@ def p_elsif_blocks(p):
 
 def p_elsif_block(p):
     '''elsif_block : ELSIF LPAREN conditions RPAREN codigo'''
-    if (not isinstance(p[3], bool)):
-         genLogsSemantico(f"la expresión no es booleana")
 
 def p_else_block(p):
     '''else_block : ELSE codigo END'''
@@ -200,9 +199,7 @@ def p_else_block(p):
 # CONDICIONAL CASE-WHEN
 def p_when(p):
     '''when : WHEN conditions codigo'''
-    if (not isinstance(p[2], bool)):
-        genLogsSemantico(f"la expresión no es booleana")
- 
+
 
 def p_whens(p):
     '''whens : when
