@@ -1,6 +1,5 @@
 import ply.lex as lex
 from datetime import datetime
-import os
 
 error_messages = []
 
@@ -118,8 +117,11 @@ def t_COMMENT(t):
 t_ignore = ' \t\f\n\r'
 
 def t_error(t):
-    print(f"Carácter ilegal '%s'" % t.value[0])
-    error_messages.append(f"Carácter ilegal '%s'" % t.value[0])
+    global error_messages
+    error_message = f"Carácter ilegal '%s'" % t.value[0]
+    error_messages.append(error_message)
+    print(len(error_messages))
+    print(error_message)
     t.lexer.skip(1)
 
 # Construcción del lexer

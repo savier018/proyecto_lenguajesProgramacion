@@ -3,13 +3,14 @@ from analizador_lexico import analizar_codigoL
 from analizador_lexico import checkErrorsL
 from analizador_lexico import getErrorsL
 from analizador_lexico import deleteErrorsL
-from analizador_sintactico1 import analizar_codigoS
-from analizador_sintactico1 import checkErrorsSS
-from analizador_sintactico1 import getErrorsSS
-from analizador_sintactico1 import deleteErrorsSS
+from analizador_sintactico import analizar_codigoS
+from analizador_sintactico import checkErrorsSS
+from analizador_sintactico import getErrorsSS
+from analizador_sintactico import deleteErrorsSS
 
-erroresText=""
+erroresText=[]
 errors=False
+
 
 def analizar_codigo(entrada_usuario):
     analizar_codigoL(entrada_usuario)
@@ -19,10 +20,13 @@ def analizar_codigo(entrada_usuario):
     global erroresText
     if (checkErrorsL):
         ErroresL= getErrorsL()
-        erroresText = '\n'.join(ErroresL)
+        for i in ErroresL:
+            erroresText.append(i)
+        print(erroresText)
     if (checkErrorsSS):
         ErroresSS= getErrorsSS()
-        erroresText = '\n'.join(ErroresSS)
+        for i in ErroresSS:
+            erroresText.append(i)
 
 
 def obtener_respuesta():
@@ -37,8 +41,8 @@ def obtener_respuesta():
     texto_respuesta.delete("1.0", "end")
     texto_respuesta.insert("1.0",respuestaText)
     texto_errores.delete("1.0", "end")
-    texto_errores.insert("1.0",erroresText)  
-    erroresText = ""
+    texto_errores.insert("1.0",'\n'.join(erroresText))  
+    erroresText.clear()
     deleteErrorsL()
     deleteErrorsSS()
 

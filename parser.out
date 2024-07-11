@@ -102,8 +102,8 @@ Rule 78    when -> ELSE codigo
 Rule 79    data_structure -> array
 Rule 80    data_structure -> hash
 Rule 81    data_structure -> set
-Rule 82    array -> LBRACKET RBRACKET
-Rule 83    array -> LBRACKET values RBRACKET
+Rule 82    array -> LBRACKET values RBRACKET
+Rule 83    array -> LBRACKET RBRACKET
 Rule 84    hash -> LBRACE RBRACE
 Rule 85    hash -> LBRACE hash_contents RBRACE
 Rule 86    hash_contents -> hash_pair
@@ -254,7 +254,7 @@ params               : 98 99 100 101 102 118
 set                  : 81
 statement            : 1 2
 value                : 20 21 22 23 24 34 34 35 36 38 47 47 48 74 77 88 88 115 120 122 122 124 125 126 127 128 129
-values               : 21 83 90
+values               : 21 82 90
 when                 : 75 76
 whens                : 74 75
 while_loop           : 7
@@ -343,8 +343,8 @@ state 0
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -468,8 +468,8 @@ state 1
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -1360,8 +1360,8 @@ state 32
 
 state 33
 
-    (82) array -> LBRACKET . RBRACKET
-    (83) array -> LBRACKET . values RBRACKET
+    (82) array -> LBRACKET . values RBRACKET
+    (83) array -> LBRACKET . RBRACKET
     (20) values -> . value
     (21) values -> . value COMMA values
     (15) value -> . NUMBER
@@ -1370,14 +1370,14 @@ state 33
     (18) value -> . GLOBAL_VAR
     (19) value -> . ID
 
-    RBRACKET        shift and go to state 71
+    RBRACKET        shift and go to state 72
     NUMBER          shift and go to state 31
     STRING          shift and go to state 30
     INSTANCE_VAR    shift and go to state 49
     GLOBAL_VAR      shift and go to state 50
     ID              shift and go to state 51
 
-    values                         shift and go to state 72
+    values                         shift and go to state 71
     value                          shift and go to state 73
 
 state 34
@@ -1538,8 +1538,8 @@ state 43
     (81) data_structure -> . set
     (47) condition -> . value operComp value
     (48) condition -> . value operComp aritmeticExpresion
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -1613,8 +1613,8 @@ state 45
     (81) data_structure -> . set
     (47) condition -> . value operComp value
     (48) condition -> . value operComp aritmeticExpresion
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -1666,8 +1666,8 @@ state 46
     (81) data_structure -> . set
     (47) condition -> . value operComp value
     (48) condition -> . value operComp aritmeticExpresion
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -2065,8 +2065,8 @@ state 55
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -2218,8 +2218,8 @@ state 57
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -2595,8 +2595,8 @@ state 69
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -2666,37 +2666,37 @@ state 70
 
 state 71
 
-    (82) array -> LBRACKET RBRACKET .
+    (82) array -> LBRACKET values . RBRACKET
 
-    INSTANCE_VAR    reduce using rule 82 (array -> LBRACKET RBRACKET .)
-    GLOBAL_VAR      reduce using rule 82 (array -> LBRACKET RBRACKET .)
-    ID              reduce using rule 82 (array -> LBRACKET RBRACKET .)
-    LPAREN          reduce using rule 82 (array -> LBRACKET RBRACKET .)
-    WHILE           reduce using rule 82 (array -> LBRACKET RBRACKET .)
-    CASE            reduce using rule 82 (array -> LBRACKET RBRACKET .)
-    DEF             reduce using rule 82 (array -> LBRACKET RBRACKET .)
-    PRINT           reduce using rule 82 (array -> LBRACKET RBRACKET .)
-    PUTS            reduce using rule 82 (array -> LBRACKET RBRACKET .)
-    P               reduce using rule 82 (array -> LBRACKET RBRACKET .)
-    NUMBER          reduce using rule 82 (array -> LBRACKET RBRACKET .)
-    STRING          reduce using rule 82 (array -> LBRACKET RBRACKET .)
-    IF              reduce using rule 82 (array -> LBRACKET RBRACKET .)
-    LBRACKET        reduce using rule 82 (array -> LBRACKET RBRACKET .)
-    LBRACE          reduce using rule 82 (array -> LBRACKET RBRACKET .)
-    SET             reduce using rule 82 (array -> LBRACKET RBRACKET .)
-    $end            reduce using rule 82 (array -> LBRACKET RBRACKET .)
-    END             reduce using rule 82 (array -> LBRACKET RBRACKET .)
-    ELSE            reduce using rule 82 (array -> LBRACKET RBRACKET .)
-    ELSIF           reduce using rule 82 (array -> LBRACKET RBRACKET .)
-    WHEN            reduce using rule 82 (array -> LBRACKET RBRACKET .)
-    RETURN          reduce using rule 82 (array -> LBRACKET RBRACKET .)
+    RBRACKET        shift and go to state 132
 
 
 state 72
 
-    (83) array -> LBRACKET values . RBRACKET
+    (83) array -> LBRACKET RBRACKET .
 
-    RBRACKET        shift and go to state 132
+    INSTANCE_VAR    reduce using rule 83 (array -> LBRACKET RBRACKET .)
+    GLOBAL_VAR      reduce using rule 83 (array -> LBRACKET RBRACKET .)
+    ID              reduce using rule 83 (array -> LBRACKET RBRACKET .)
+    LPAREN          reduce using rule 83 (array -> LBRACKET RBRACKET .)
+    WHILE           reduce using rule 83 (array -> LBRACKET RBRACKET .)
+    CASE            reduce using rule 83 (array -> LBRACKET RBRACKET .)
+    DEF             reduce using rule 83 (array -> LBRACKET RBRACKET .)
+    PRINT           reduce using rule 83 (array -> LBRACKET RBRACKET .)
+    PUTS            reduce using rule 83 (array -> LBRACKET RBRACKET .)
+    P               reduce using rule 83 (array -> LBRACKET RBRACKET .)
+    NUMBER          reduce using rule 83 (array -> LBRACKET RBRACKET .)
+    STRING          reduce using rule 83 (array -> LBRACKET RBRACKET .)
+    IF              reduce using rule 83 (array -> LBRACKET RBRACKET .)
+    LBRACKET        reduce using rule 83 (array -> LBRACKET RBRACKET .)
+    LBRACE          reduce using rule 83 (array -> LBRACKET RBRACKET .)
+    SET             reduce using rule 83 (array -> LBRACKET RBRACKET .)
+    $end            reduce using rule 83 (array -> LBRACKET RBRACKET .)
+    END             reduce using rule 83 (array -> LBRACKET RBRACKET .)
+    ELSE            reduce using rule 83 (array -> LBRACKET RBRACKET .)
+    ELSIF           reduce using rule 83 (array -> LBRACKET RBRACKET .)
+    WHEN            reduce using rule 83 (array -> LBRACKET RBRACKET .)
+    RETURN          reduce using rule 83 (array -> LBRACKET RBRACKET .)
 
 
 state 73
@@ -3697,8 +3697,8 @@ state 106
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -3853,8 +3853,8 @@ state 109
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -3979,8 +3979,8 @@ state 110
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -4299,8 +4299,8 @@ state 125
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -4488,8 +4488,8 @@ state 130
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -4582,30 +4582,30 @@ state 131
 
 state 132
 
-    (83) array -> LBRACKET values RBRACKET .
+    (82) array -> LBRACKET values RBRACKET .
 
-    INSTANCE_VAR    reduce using rule 83 (array -> LBRACKET values RBRACKET .)
-    GLOBAL_VAR      reduce using rule 83 (array -> LBRACKET values RBRACKET .)
-    ID              reduce using rule 83 (array -> LBRACKET values RBRACKET .)
-    LPAREN          reduce using rule 83 (array -> LBRACKET values RBRACKET .)
-    WHILE           reduce using rule 83 (array -> LBRACKET values RBRACKET .)
-    CASE            reduce using rule 83 (array -> LBRACKET values RBRACKET .)
-    DEF             reduce using rule 83 (array -> LBRACKET values RBRACKET .)
-    PRINT           reduce using rule 83 (array -> LBRACKET values RBRACKET .)
-    PUTS            reduce using rule 83 (array -> LBRACKET values RBRACKET .)
-    P               reduce using rule 83 (array -> LBRACKET values RBRACKET .)
-    NUMBER          reduce using rule 83 (array -> LBRACKET values RBRACKET .)
-    STRING          reduce using rule 83 (array -> LBRACKET values RBRACKET .)
-    IF              reduce using rule 83 (array -> LBRACKET values RBRACKET .)
-    LBRACKET        reduce using rule 83 (array -> LBRACKET values RBRACKET .)
-    LBRACE          reduce using rule 83 (array -> LBRACKET values RBRACKET .)
-    SET             reduce using rule 83 (array -> LBRACKET values RBRACKET .)
-    $end            reduce using rule 83 (array -> LBRACKET values RBRACKET .)
-    END             reduce using rule 83 (array -> LBRACKET values RBRACKET .)
-    ELSE            reduce using rule 83 (array -> LBRACKET values RBRACKET .)
-    ELSIF           reduce using rule 83 (array -> LBRACKET values RBRACKET .)
-    WHEN            reduce using rule 83 (array -> LBRACKET values RBRACKET .)
-    RETURN          reduce using rule 83 (array -> LBRACKET values RBRACKET .)
+    INSTANCE_VAR    reduce using rule 82 (array -> LBRACKET values RBRACKET .)
+    GLOBAL_VAR      reduce using rule 82 (array -> LBRACKET values RBRACKET .)
+    ID              reduce using rule 82 (array -> LBRACKET values RBRACKET .)
+    LPAREN          reduce using rule 82 (array -> LBRACKET values RBRACKET .)
+    WHILE           reduce using rule 82 (array -> LBRACKET values RBRACKET .)
+    CASE            reduce using rule 82 (array -> LBRACKET values RBRACKET .)
+    DEF             reduce using rule 82 (array -> LBRACKET values RBRACKET .)
+    PRINT           reduce using rule 82 (array -> LBRACKET values RBRACKET .)
+    PUTS            reduce using rule 82 (array -> LBRACKET values RBRACKET .)
+    P               reduce using rule 82 (array -> LBRACKET values RBRACKET .)
+    NUMBER          reduce using rule 82 (array -> LBRACKET values RBRACKET .)
+    STRING          reduce using rule 82 (array -> LBRACKET values RBRACKET .)
+    IF              reduce using rule 82 (array -> LBRACKET values RBRACKET .)
+    LBRACKET        reduce using rule 82 (array -> LBRACKET values RBRACKET .)
+    LBRACE          reduce using rule 82 (array -> LBRACKET values RBRACKET .)
+    SET             reduce using rule 82 (array -> LBRACKET values RBRACKET .)
+    $end            reduce using rule 82 (array -> LBRACKET values RBRACKET .)
+    END             reduce using rule 82 (array -> LBRACKET values RBRACKET .)
+    ELSE            reduce using rule 82 (array -> LBRACKET values RBRACKET .)
+    ELSIF           reduce using rule 82 (array -> LBRACKET values RBRACKET .)
+    WHEN            reduce using rule 82 (array -> LBRACKET values RBRACKET .)
+    RETURN          reduce using rule 82 (array -> LBRACKET values RBRACKET .)
 
 
 state 133
@@ -5126,8 +5126,8 @@ state 150
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -5286,8 +5286,8 @@ state 153
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -5413,8 +5413,8 @@ state 154
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -5720,8 +5720,8 @@ state 161
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -5845,8 +5845,8 @@ state 162
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -5973,8 +5973,8 @@ state 163
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -6278,8 +6278,8 @@ state 172
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -6504,8 +6504,8 @@ state 181
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -6668,8 +6668,8 @@ state 182
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -6821,8 +6821,8 @@ state 184
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -6947,8 +6947,8 @@ state 185
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -7079,8 +7079,8 @@ state 187
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -7206,8 +7206,8 @@ state 188
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -7347,8 +7347,8 @@ state 189
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -7489,8 +7489,8 @@ state 190
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -7617,8 +7617,8 @@ state 191
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -7817,8 +7817,8 @@ state 194
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -8008,8 +8008,8 @@ state 196
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -8203,8 +8203,8 @@ state 199
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -8334,8 +8334,8 @@ state 200
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -8527,8 +8527,8 @@ state 203
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -8656,8 +8656,8 @@ state 204
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -8929,8 +8929,8 @@ state 211
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -9135,8 +9135,8 @@ state 215
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -9267,8 +9267,8 @@ state 216
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -9505,8 +9505,8 @@ state 221
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -9829,8 +9829,8 @@ state 230
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -9985,8 +9985,8 @@ state 232
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -10357,8 +10357,8 @@ state 243
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
@@ -10655,8 +10655,8 @@ state 251
     (62) if_block -> . IF conditions codigo END
     (63) if_block -> . IF LPAREN conditions RPAREN codigo
     (64) if_block -> . IF LPAREN conditions RPAREN codigo END
-    (82) array -> . LBRACKET RBRACKET
-    (83) array -> . LBRACKET values RBRACKET
+    (82) array -> . LBRACKET values RBRACKET
+    (83) array -> . LBRACKET RBRACKET
     (84) hash -> . LBRACE RBRACE
     (85) hash -> . LBRACE hash_contents RBRACE
     (89) set -> . SET LPAREN LBRACKET RBRACKET RPAREN
